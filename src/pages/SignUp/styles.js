@@ -2,16 +2,18 @@ import { styled } from "styled-components"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const SignInContainer = styled.div`
-    max-width: 320px;
+    width: 320px;
     height: 100vh;
     margin: 0 auto;
     color: ${({ theme }) => theme['LIGHT-400']};
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-area: 
+    'header' 
+    'form';
 
-    margin-top: 9.875rem;
-
-    
+    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+      
+    }       
 `
 export const SignInHeader = styled.header`
     display: flex;
@@ -69,7 +71,7 @@ export const SignInForm = styled.form`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        
+        width: 950px;
     }  
 `
 

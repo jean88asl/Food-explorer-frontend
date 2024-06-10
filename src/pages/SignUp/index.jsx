@@ -4,6 +4,7 @@ import Logo from "../../assets/logo.svg"
 export function SignUp() {
     return (
         <SignInContainer>
+
             <SignInHeader>
                 <img src={Logo} alt="" />
                 <h1>food explorer</h1>
@@ -37,9 +38,8 @@ export function SignUp() {
                 <button>
                     Criar conta
                 </button>
-            <SignInLink href="#">Já tenho uma conta</SignInLink>
+                <SignInLink href="#">Já tenho uma conta</SignInLink>
             </SignInForm>
-
         </SignInContainer>
     )
 }
