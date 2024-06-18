@@ -1,5 +1,7 @@
 import { SignInContainer, SignInHeader, SignInForm, SignInLink } from './styles'
 import Logo from "../../assets/logo.svg"
+import { Input } from '../../components/Input'
+import { Button } from '../../components/Button'
 
 export function SignIn() {
     return (
@@ -10,28 +12,26 @@ export function SignIn() {
             </SignInHeader>
 
             <SignInForm>
+                <h2>Faça Login</h2>
                 <div>
                     <label htmlFor="">Email</label>
-                    <input
-                        type="text"
+                    <Input
                         placeholder='Exemplo:exemplo@email.com.br'
                     />
                 </div>
 
                 <div>
                     <label htmlFor="">Senha</label>
-                    <input
+                    <Input
                         type="password"
                         placeholder='No mínimo 6 caracteres' 
                     />
                 </div>
 
-                <button>
-                    Entrar
-                </button>
-            </SignInForm>
+                <Button title="Entrar"/>
 
-            <SignInLink href="#">Criar uma conta</SignInLink>
+                <SignInLink href="#">Criar uma conta</SignInLink>
+            </SignInForm>
         </SignInContainer>
     )
 }
