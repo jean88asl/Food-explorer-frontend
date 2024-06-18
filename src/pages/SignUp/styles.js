@@ -2,18 +2,22 @@ import { styled } from "styled-components"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const SignInContainer = styled.div`
-    width: 320px;
+    max-width: 1120px;
     height: 100vh;
     margin: 0 auto;
     color: ${({ theme }) => theme['LIGHT-400']};
-    display: grid;
-    grid-area: 
-    'header' 
-    'form';
 
-    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-      
-    }       
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 19.125rem;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
 `
 export const SignInHeader = styled.header`
     display: flex;
@@ -30,13 +34,28 @@ export const SignInHeader = styled.header`
         font-size: 2.25rem;
         font-weight: bold;
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+       justify-content: center;
+       margin-top: 11.5625rem;
+    }
 `
 
 export const SignInForm = styled.form`
+    width: 29.75rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 2rem;
+    background: ${({ theme }) => theme['DARK-700']};
+    padding: 4rem;
+    border-radius: 1rem;
+
+    h2 {
+        text-align: center;
+        font-family: 'Poppins';
+        font-weight: 400;
+    }
 
     div {
         display: flex;
@@ -45,34 +64,17 @@ export const SignInForm = styled.form`
         label {
             padding-bottom: 0.5rem;
         }
-
-        input {
-            padding: 0.875rem;
-            border: 0;
-            border-radius: 8px;
-            color: ${({ theme }) => theme['LIGHT-400']};
-            background: ${({ theme }) => theme['DARK-900']};
-
-            &::placeholder {
-                color: ${({ theme }) => theme['LIGHT-500']}
-            }
-        }
-    }
-
-    button {
-        padding: 0.75rem;
-        border: 0;
-        border-radius: 5px;
-        background: ${({ theme }) => theme['TOMATO-100']};
-        color: ${({ theme }) => theme['LIGHT-100']};
-        font-family: "Poppins";
-        font-size: medium;
-        cursor: pointer;
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        width: 950px;
-    }  
+       width: 100%;
+       padding: 0;
+       background: none;
+
+       h2 {
+        display: none;
+       }
+    }
 `
 
 export const SignInLink = styled.a`
