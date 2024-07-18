@@ -16,8 +16,13 @@ export const GlobalStyle = createGlobalStyle`
         }   
     }
 
+    :focus {
+        outline: none;
+    }
+
     body {
         background: ${({theme}) => theme['DARK-400']};
+        color: ${({theme}) => theme['LIGHT-100']};
         -webkit-font-smoothing: antialiased;
     }
 

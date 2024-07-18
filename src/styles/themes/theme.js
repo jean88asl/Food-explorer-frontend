@@ -1,4 +1,6 @@
 export const defaultTheme = { 
+    'GRADIENT-200': "#041821",
+
     "LIGHT-100": "#FFFFFF",
     "LIGHT-200": "#FFFAF1",
     "LIGHT-300": "#E1E1E6",
