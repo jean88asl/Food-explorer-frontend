@@ -25,6 +25,7 @@ export const Container = styled.div`
     }
 
     svg {
+        margin-left: 6rem;
         color: ${({ theme }) => theme['LIGHT-500']};
         font-size: 1.5rem;
     }
