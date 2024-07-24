@@ -12,6 +12,12 @@ export function SignIn() {
 
     const { signIn } = useAuth()
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSignIn()
+        }
+    };
+
     function handleSignIn() {
         if (!email || !password) {
             alert("Favor preencha todos os campos")
@@ -46,12 +52,13 @@ export function SignIn() {
                         type="password"
                         placeholder='No mínimo 6 caracteres'
                         onChange={e => setPassword(e.target.value)}
+                        onKeyDown={handleKeyDown}
                     />
                 </div>
 
                 <Button title="Entrar" type="button" onClick={handleSignIn} />
 
-                <SignInLink href="#">Criar uma conta</SignInLink>
+                <SignInLink href="/signup">Criar uma conta</SignInLink>
             </SignInForm>
         </SignInContainer>
     )

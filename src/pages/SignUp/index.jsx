@@ -13,6 +13,12 @@ export function SignUp() {
 
     const navigate = useNavigate()
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSignUp()
+        }
+    };
+
     function handleSignUp() {
         if (!name || !email || !password) {
             return alert("Favor preencha dados os campos.")
@@ -70,8 +76,13 @@ export function SignUp() {
                     />
                 </div>
 
-                <Button type="button" title="Criar conta" onClick={handleSignUp} />
-                <SignInLink href="#">Já tenho uma conta</SignInLink>
+                <Button 
+                    type="button" 
+                    title="Criar conta" 
+                    onClick={handleSignUp}
+                    onKeyDown={handleKeyDown} 
+                />
+                <SignInLink href="/">Já tenho uma conta</SignInLink>
             </SignInForm>
         </SignInContainer>
     )
