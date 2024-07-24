@@ -38,6 +38,11 @@ export function Header() {
         navigate("/userrequests")
     }
 
+    function handleSignOut() {
+        navigate("/")
+        signOut()
+    }
+
     useEffect(() => {
         if(search.length === 0) {
             setShowResults(false)
@@ -87,7 +92,7 @@ export function Header() {
                     Pedidos (0)
                 </ButtonRequests>
 
-                <ButtonSignOut onClick={signOut}>
+                <ButtonSignOut onClick={handleSignOut}>
                     <FaArrowRightFromBracket />
                 </ButtonSignOut>
             </HeaderContainer>
