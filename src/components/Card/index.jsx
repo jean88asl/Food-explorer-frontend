@@ -9,14 +9,14 @@ import mealPlaceholder from '../../assets/meal-placeholder.jpg'
 
 import { Container, Heart, PriceContainer } from "./styles";
 
+import { useDish } from "../../contexts/DishContext"
+
 export function Card({ url, dishName, description, price, id }) {
     const urlImage = url ? `${api.defaults.baseURL}/files/${url}` : mealPlaceholder
 
-    const formattedPrice = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2
-    }).format(price / 100)
+    const { priceFormatting } = useDish()
+
+    const formattedPrice = priceFormatting(price)
 
     const [liked, setLiked] = useState(0)
     let likedIsTrue = liked === 1

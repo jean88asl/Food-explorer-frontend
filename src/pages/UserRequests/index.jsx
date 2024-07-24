@@ -3,12 +3,37 @@ import { Header } from "../../components/Header"
 
 import { OrderLine } from "./components/OrderLine"
 
-import imageTest from "../../assets/Mask group-10.png"
-
 import { Container, OderInformation, ContainerContent, PayInfo } from "./styles"
 import { PayType } from "./components/PayType"
 
+import { useEffect, useState } from "react"
+
+import { useDish } from "../../contexts/DishContext"
+
 export function UserRequests() {
+    const [dataDish, setDataDish] = useState([])
+
+    const { priceFormatting } = useDish()
+
+    function handleRemoveItem(id) {
+        const newItemList = dataDish.filter(item => item.id !== id);
+        setDataDish(newItemList);
+
+        
+        localStorage.setItem("@foodexplorer:requests", JSON.stringify(newItemList));
+
+        if(newItemList) {
+            localStorage.removeItem("@foodexplorer:requests")
+        }
+    }
+
+    useEffect(() => {
+        const dataStorage = localStorage.getItem("@foodexplorer:requests");
+
+        if (dataStorage) {
+            setDataDish(JSON.parse(dataStorage));
+        }
+    }, []);
     return (
         <Container>
             <Header />
@@ -18,28 +43,28 @@ export function UserRequests() {
                     <OderInformation>
                         <h2>Meu Pedido</h2>
 
-                        <OrderLine
-                            urlImage={imageTest}
-                            quantity="5"
-                            nameDish="Salada 1"
-                            price="15,00"
-                        />
-
-                        <OrderLine
-                            urlImage={imageTest}
-                            quantity="2"
-                            nameDish="Salada 1"
-                            price="12,00"
-                        />
+                        {dataDish &&
+                            dataDish.map(item => {
+                                return (
+                                    <OrderLine
+                                        key={item.id}
+                                        urlImage={item.url}
+                                        quantity={item.quantity}
+                                        nameDish={item.nameDish}
+                                        price={priceFormatting(item.total)}
+                                        onClick={() => handleRemoveItem(item.id)}
+                                    />
+                                )
+                            })
+                        }
 
                         <footer>
-                            Total: R$ 103,88
+                            {/* {items.total} */}
                         </footer>
                     </OderInformation>
 
                     <PayInfo>
                         <h2>Pagamento</h2>
-
                         <PayType />
                     </PayInfo>
                 </ContainerContent>

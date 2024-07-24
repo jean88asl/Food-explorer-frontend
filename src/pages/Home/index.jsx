@@ -17,18 +17,18 @@ import { useEffect, useState } from "react";
 export function Home() {
     const [dishData, setDishData] = useState([])
 
-    const meals = dishData.filter(meal => meal.category === 'refeição')
-    const desserts = dishData.filter(dessert => dessert.category === 'sobremesas')
-    const drinks = dishData.filter(drink => drink.category === 'bebidas')
-
     useEffect(() => {
-        async function FetchData() {
+        async function fetchData() {
             const response = await api.get("dish")
             setDishData(response.data)
         }
 
-        FetchData()
+        fetchData()
     }, [])
+
+    const meals = dishData.filter(meal => meal.category === 'refeição')
+    const desserts = dishData.filter(dessert => dessert.category === 'sobremesas')
+    const drinks = dishData.filter(drink => drink.category === 'bebidas')
 
     return (
         <Container>
@@ -99,15 +99,15 @@ export function Home() {
                 <Section title="bebidas">
                     <div>
                         {drinks &&
-                            drinks.map(meal => {
+                            drinks.map(drink => {
                                 return (
                                     <Card
-                                        key={meal.id}
-                                        dishName={meal.name}
-                                        description={meal.description}
-                                        price={meal.price}
-                                        url={meal.image_dish}
-                                        id={meal.id}                                        
+                                        key={drink.id}
+                                        dishName={drink.name}
+                                        description={drink.description}
+                                        price={drink.price}
+                                        url={drink.image_dish}
+                                        id={drink.id}                                        
                                     />
                                 )
                             })

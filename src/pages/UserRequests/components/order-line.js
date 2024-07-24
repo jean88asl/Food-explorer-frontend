@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const OrderImage = styled.img`
         height: 4.6875rem;
         width: 4.6875rem;
+        border-radius: 50%;
         object-fit: cover;
 `
 

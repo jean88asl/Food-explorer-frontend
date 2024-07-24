@@ -1,12 +1,19 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { Container, GroupButtons, QuantityButton, ExternalButton } from "./styles"
 import { useEffect, useState } from "react";
 
-export function ItemCounter({ dishId, price }) {
+import { useDish } from "../../contexts/DishContext"
+
+export function ItemCounter({ dishId, price, nameDish, url }) {
     const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState(0)
     const [formattedPrice, setFormattedPrice] = useState("")
+
+    const { priceFormatting, orderInfo } = useDish()
+
+    const navigate = useNavigate()
 
     function handleAddItem() {
         if (quantity >= 0) {
@@ -30,15 +37,25 @@ export function ItemCounter({ dishId, price }) {
         }
     }
 
-    useEffect(() => {
-        const price = new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-            minimumFractionDigits: 2
-        }).format(total / 100)
+    function handleGoToOrders() {
+        if (quantity >= 1) {
+            orderInfo(total, quantity, dishId, nameDish, url)
 
-        setFormattedPrice(price)
-    }, [total])
+            const finishRequest = confirm("Tem certeza que deseja finalizar o pedido?")
+
+            if(finishRequest) {
+                navigate("/userrequests")
+            }
+        } else {
+            alert("Favor inclua ao menos um item!")
+        }
+    }
+
+    useEffect(() => {
+        const newPriceValue = priceFormatting(total)
+
+        setFormattedPrice(newPriceValue)
+    }, [total, priceFormatting])
 
     return (
         <Container>
@@ -52,9 +69,9 @@ export function ItemCounter({ dishId, price }) {
                 </QuantityButton>
             </GroupButtons>
 
-            <ExternalButton>
+            <ExternalButton onClick={handleGoToOrders}>
                 {
-                    !price ? (`incluir`) : (`incluir ${String.fromCharCode(8226)} ${formattedPrice}`) 
+                    !price ? (`incluir`) : (`incluir ${String.fromCharCode(8226)} ${formattedPrice}`)
                 }
             </ExternalButton>
         </Container>

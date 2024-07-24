@@ -70,6 +70,8 @@ export function Dish() {
                             <ItemCounter 
                                 dishId={params.id}
                                 price={dataDish.price}
+                                nameDish={dataDish.name}
+                                url={urlImage}
                             />
                         </div>
                     </Description>
