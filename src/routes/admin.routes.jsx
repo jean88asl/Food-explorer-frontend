@@ -6,11 +6,13 @@ import { AddDish } from '../pages/Admin/AddDish'
 import { EditDish } from "../pages/Admin/EditDish"
 import { UserRequests } from "../pages/UserRequests"
 import { NotFound } from "../pages/NotFound"
+import { DishProvider } from "../contexts/DishContext"
 
 export function AdminRoutes() {
     const user = localStorage.getItem("@foodexplorer:user")
 
     return (
+        <DishProvider>
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/dish/:id' element={<Dish />} />
@@ -24,5 +26,6 @@ export function AdminRoutes() {
                 <Route path="*" element={<Navigate to="/" />} />
             )}
         </Routes>
+        </DishProvider>
     )
 }

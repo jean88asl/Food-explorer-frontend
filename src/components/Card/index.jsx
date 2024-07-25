@@ -1,17 +1,24 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
-import { api } from "../../service/api";
+import { Link, useNavigate } from "react-router-dom"
+
+import { useDish } from "../../contexts/DishContext"
+import { USER_ROLE } from "../../utils/roles"
+import { useAuth } from "../../hooks/auth"
 
 import { RiHeartFill, RiHeartLine } from "react-icons/ri";
+import { PiPencilSimpleLight } from "react-icons/pi";
 import { ItemCounter } from "../ItemCounter"
 import mealPlaceholder from '../../assets/meal-placeholder.jpg'
 
-import { Container, Heart, PriceContainer } from "./styles";
+import { Container, IconCard, PriceContainer } from "./styles";
 
-import { useDish } from "../../contexts/DishContext"
+import { api } from "../../service/api";
 
 export function Card({ url, dishName, description, price, id }) {
+    const { user } = useAuth()
+    const navigate = useNavigate()
+
     const urlImage = url ? `${api.defaults.baseURL}/files/${url}` : mealPlaceholder
 
     const { priceFormatting } = useDish()
@@ -31,6 +38,10 @@ export function Card({ url, dishName, description, price, id }) {
         setLiked(1)
     }
 
+    function handleNavigate() {
+        navigate(`/dish/${id}`)
+    }
+
     useEffect(() => {
         async function FetchData() {
             const response = await api.get(`likes/${id}`)
@@ -41,9 +52,9 @@ export function Card({ url, dishName, description, price, id }) {
 
     return (
         <Container>
-            <Heart>
-                {
-                    likedIsTrue ? (
+            {![USER_ROLE.ADMIN].includes(user.role) ?
+                <IconCard>
+                    {likedIsTrue ? (
                         <button disabled>
                             <RiHeartFill
                                 className="liked"
@@ -53,9 +64,14 @@ export function Card({ url, dishName, description, price, id }) {
                         <button onClick={handleLike}>
                             <RiHeartLine />
                         </button>
-                    )
-                }
-            </Heart>
+                    )}
+                </IconCard> :
+                <IconCard>
+                    <button title="editar" onClick={handleNavigate}>
+                        <PiPencilSimpleLight />
+                    </button>
+                </IconCard>
+            }
             <img src={urlImage} alt="" />
             <Link to={`/dish/${id}`}>
                 {dishName} &#62;
@@ -64,9 +80,12 @@ export function Card({ url, dishName, description, price, id }) {
 
             <PriceContainer>{formattedPrice}</PriceContainer>
 
-            <ItemCounter
-                dishId={id}
-            />
+            {
+                ![USER_ROLE.ADMIN].includes(user.role) &&
+                <ItemCounter
+                    dishId={id}
+                />
+            }
         </Container>
     )
 }

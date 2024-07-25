@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
     position: relative;
     width: 19rem;
+    min-height: 28.875rem;
     
     display: flex;
     flex-direction: column;
@@ -37,10 +38,10 @@ export const Container = styled.div`
 export const PriceContainer = styled.span`
     display: block;
     font-size: 2.5rem;
-    color: ${({theme}) => theme['CAKE-200']}
+    color: ${({theme}) => theme['CAKE-200']};
 `
 
-export const Heart = styled.div`
+export const IconCard = styled.div`
     position: absolute;
     font-size: 22px;
     top: 16px; right: 18px;
@@ -56,6 +57,11 @@ export const Heart = styled.div`
         color: white;
 
         svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        img {
             height: 1.5rem;
             width: 1.5rem;
         }

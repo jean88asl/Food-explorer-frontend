@@ -5,13 +5,13 @@ import { useAuth } from "../hooks/auth";
 
 const DishContext = createContext({});
 
-const priceFormatting = (price) => {
+function priceFormatting (price) {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
     minimumFractionDigits: 2
   }).format(price / 100);
-};
+}
 
 function DishProvider({ children }) {
   const [items, setItems] = useState([]);

@@ -6,12 +6,12 @@ export const Container = styled.button`
     justify-content: center;
     gap: 8px;
 
-    padding: 0.75rem;
+    padding: 0.75rem 1.5rem;
     border: 0;
     border-radius: 5px;
     background: ${({ theme }) => theme['TOMATO-100']};
     color: ${({ theme }) => theme['LIGHT-100']};
     font-family: "Poppins";
-    font-size: medium;
+    font-size: 0.875rem;
     cursor: pointer;
 `

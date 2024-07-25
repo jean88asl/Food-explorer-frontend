@@ -5,7 +5,7 @@ export const Container = styled.div`
     height: 6.5rem;
     grid-area: 'header';
 
-    background: ${({theme}) => theme['DARK-600']};
+    background: ${({ theme }) => theme['DARK-600']};
 `
 
 export const HeaderContainer = styled.header`
@@ -20,7 +20,7 @@ export const HeaderContainer = styled.header`
     gap: 32px;
 
     button {
-        color: ${({theme}) => theme['LIGHT-100']};
+        color: ${({ theme }) => theme['LIGHT-100']};
 
         svg {
            font-size: 2rem;
@@ -92,13 +92,17 @@ export const SearchContainer = styled.div`
 `
 
 export const ButtonRequests = styled.button`
+    width: 13.5rem;
+    height: 3.5rem;
     display: flex;
     align-items: center;
-    padding: 0.75rem 2rem;
+    justify-content: center;
+    font-family: 'Poppins';
+    font-size: 0.875rem;
     border: 0;
     border-radius: 5px;
-    background: ${({theme}) => theme['TOMATO-100']};
-    color: ${({theme}) => theme['LIGHT-100']};
+    background: ${({ theme }) => theme['TOMATO-100']};
+    color: ${({ theme }) => theme['LIGHT-100']};
     cursor: pointer;
 
     img {
@@ -107,7 +111,7 @@ export const ButtonRequests = styled.button`
 `
 
 export const ButtonSignOut = styled.button`
-    color: ${({theme}) => theme['LIGHT-100']};
+    color: ${({ theme }) => theme['LIGHT-100']};
     margin: 0;
     background: transparent;
     border: none;
@@ -124,11 +128,25 @@ export const LogoContainer = styled.div`
         width: 1.875rem;
     }
 
-    h1{
-        font-size: 2rem;
-        font-weight: bold;
+    div {
+        display: flex;
+        flex-direction: column;
 
-        color: ${({theme}) => theme['LIGHT-100']}
-    } 
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+
+            color: ${({ theme }) => theme['LIGHT-100']}
+        } 
+
+        p {
+            font-size: 0.75rem;
+            font-family: 'Roboto';
+            text-align: right;
+            color: ${({theme}) => theme['CAKE-200']};
+        }
+    }
+    
 `
 

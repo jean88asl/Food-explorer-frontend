@@ -1,10 +1,12 @@
 import Logo from "../../assets/logo.svg"
 import Receipt from "../../assets/receipt.svg";
 
+import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles"
+
 import { RiSearchLine } from "react-icons/ri";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 
-import { useAuth } from "../../hooks/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../service/api";
@@ -12,7 +14,7 @@ import { api } from "../../service/api";
 import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, SearchContainer } from "./styles"
 
 export function Header() {
-    const { signOut } = useAuth()
+    const { signOut, user } = useAuth()
     const navigate = useNavigate()
 
     const [search, setSearch] = useState("")
@@ -28,14 +30,18 @@ export function Header() {
     async function handleSearch() {
         if (search.length > 2) {
             const response = await api(`/dish?name=${search}`)
-            
+
             setResults(response.data)
-            setShowResults(true)            
+            setShowResults(true)
         }
     }
 
     function handleNavigate() {
         navigate("/userrequests")
+    }
+
+    function handleNavigateAdmin() {
+        navigate("/add")
     }
 
     function handleSignOut() {
@@ -44,7 +50,7 @@ export function Header() {
     }
 
     useEffect(() => {
-        if(search.length === 0) {
+        if (search.length === 0) {
             setShowResults(false)
             setResults([])
         }
@@ -55,7 +61,13 @@ export function Header() {
             <HeaderContainer>
                 <LogoContainer>
                     <img src={Logo} alt="" />
-                    <h1>food explorer</h1>
+                    <div>
+                        <h1>food explorer</h1>
+                        {
+                            [USER_ROLE.ADMIN].includes(user.role) &&
+                            <p>admin</p>
+                        }
+                    </div>
                 </LogoContainer>
 
                 <SearchContainer>
@@ -74,7 +86,7 @@ export function Header() {
                     {
                         showResults && (
                             <div className="results">
-                                {   
+                                {
                                     results.map((item, index) => (
                                         <Link to={`/dish/${item.id}`} key={index}>
                                             <p >{item.dish_name}</p>
@@ -82,15 +94,22 @@ export function Header() {
                                         </Link>
                                     ))
                                 }
-                            </div>  
+                            </div>
                         )
                     }
                 </SearchContainer>
 
-                <ButtonRequests onClick={handleNavigate}>
-                    <img src={Receipt} alt="" />
-                    Pedidos (0)
-                </ButtonRequests>
+                {
+                    [USER_ROLE.ADMIN].includes(user.role) ?
+                        <ButtonRequests onClick={handleNavigateAdmin}>
+                            Novo Prato
+                        </ButtonRequests> 
+                    :
+                        <ButtonRequests onClick={handleNavigate}>
+                            <img src={Receipt} alt="" />
+                            Pedidos (0)
+                        </ButtonRequests>
+                }
 
                 <ButtonSignOut onClick={handleSignOut}>
                     <FaArrowRightFromBracket />
