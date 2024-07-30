@@ -16,7 +16,7 @@ import mealPlaceholder from '../../assets/meal-placeholder.jpg'
 import { useEffect, useState } from "react";
 import { api } from "../../service/api";
 
-import { DishContainer, DishLink, DishDetails, ImageContainer, Description, TagContainer } from "./styles";
+import { Container, DishLink, DishDetails, ImageContainer, Description, TagContainer } from "./styles";
 
 export function Dish() {
     const { user } = useAuth()
@@ -44,7 +44,7 @@ export function Dish() {
     }, [params])
 
     return (
-        <DishContainer>
+        <Container>
             <Header />
 
             <main>
@@ -88,6 +88,7 @@ export function Dish() {
                                 :
                                 <Button 
                                     title="Editar prato"
+                                    className="bnt-dish"
                                     onClick={handleNavigate}
                                 />
                             }
@@ -97,6 +98,6 @@ export function Dish() {
             </main>
 
             <Footer />
-        </DishContainer>
+        </Container>
     )
 }
