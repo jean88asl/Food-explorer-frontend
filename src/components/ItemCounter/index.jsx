@@ -43,7 +43,7 @@ export function ItemCounter({ dishId, price, nameDish, url }) {
 
             const finishRequest = confirm("Tem certeza que deseja finalizar o pedido?")
 
-            if(finishRequest) {
+            if (finishRequest) {
                 navigate("/userrequests")
             }
         } else {
@@ -59,21 +59,21 @@ export function ItemCounter({ dishId, price, nameDish, url }) {
 
     return (
         <Container>
-            <GroupButtons>
-                <QuantityButton onClick={handleRemoveItem}>
-                    <FiMinus />
-                </QuantityButton>
-                <span>{String(quantity).padStart(2, 0)}</span>
-                <QuantityButton onClick={handleAddItem}>
-                    <FiPlus />
-                </QuantityButton>
-            </GroupButtons>
+                <GroupButtons>
+                    <QuantityButton onClick={handleRemoveItem}>
+                        <FiMinus />
+                    </QuantityButton>
+                    <span>{String(quantity).padStart(2, 0)}</span>
+                    <QuantityButton onClick={handleAddItem}>
+                        <FiPlus />
+                    </QuantityButton>
+                </GroupButtons>
 
-            <ExternalButton onClick={handleGoToOrders}>
-                {
-                    !price ? (`incluir`) : (`incluir ${String.fromCharCode(8226)} ${formattedPrice}`)
-                }
-            </ExternalButton>
+                <ExternalButton onClick={handleGoToOrders}>
+                    {
+                        !price ? (`incluir`) : (`incluir ${String.fromCharCode(8226)} ${formattedPrice}`)
+                    }
+                </ExternalButton>
         </Container>
     )
 }

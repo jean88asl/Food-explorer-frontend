@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -12,13 +13,28 @@ export function SwiperComponent({ items }) {
         <SwiperContainer>
             <Swiper
                 modules={[Pagination, Navigation]}
-                slidesPerView={3.5}
                 allowSlideNext={true}
                 spaceBetween={0}
                 loop={true}
-                navigation
                 rewind={true}
+                navigation={true}
                 loopPreventsSliding={true}
+                breakpoints={{
+                    425: {
+                      slidesPerView: 2,
+                      spaceBetween: 34,
+
+                    },
+                    768: {
+                      slidesPerView: 3,
+                      spaceBetween: 12,
+                      navigation: false,
+                    },
+                    1024: {
+                      slidesPerView: 3.5,
+                      spaceBetween: 27,
+                    },
+                  }}
             >
                 {items.map(item => (
                     <SwiperSlide key={item.id}>

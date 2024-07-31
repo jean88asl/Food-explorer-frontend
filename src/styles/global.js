@@ -39,4 +39,20 @@ export const GlobalStyle = createGlobalStyle`
     a:hover, button:hover {
         filter: brightness(0.8);
     }
+
+    ::-webkit-scrollbar{
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: ${({theme}) => theme['DARK-900']};
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({theme}) => theme['LIGHT-400']};;
+    }
+
+    ::-webkit-scrollbar-button {
+        border-radius: 8px;
+    }
 `

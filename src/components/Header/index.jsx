@@ -6,12 +6,13 @@ import { USER_ROLE } from "../../utils/roles"
 
 import { RiSearchLine } from "react-icons/ri";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { BsList } from "react-icons/bs";
 
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../service/api";
 
-import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, SearchContainer } from "./styles"
+import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, SearchContainer, BtnMenu } from "./styles"
 
 export function Header() {
     const { signOut, user } = useAuth()
@@ -59,6 +60,10 @@ export function Header() {
     return (
         <Container>
             <HeaderContainer>
+                <BtnMenu>
+                    <BsList />
+                </BtnMenu>
+
                 <LogoContainer>
                     <img src={Logo} alt="" />
                     <div>
@@ -103,12 +108,13 @@ export function Header() {
                     [USER_ROLE.ADMIN].includes(user.role) ?
                         <ButtonRequests onClick={handleNavigateAdmin}>
                             Novo Prato
-                        </ButtonRequests> 
-                    :
-                        <ButtonRequests onClick={handleNavigate}>
-                            <img src={Receipt} alt="" />
-                            Pedidos (0)
                         </ButtonRequests>
+                        : <>
+                            <ButtonRequests onClick={handleNavigate}>
+                                <img src={Receipt} alt="" />
+                                <span>Pedidos (0)</span>
+                            </ButtonRequests>
+                          </>
                 }
 
                 <ButtonSignOut onClick={handleSignOut}>

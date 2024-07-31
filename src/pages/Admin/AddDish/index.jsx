@@ -1,16 +1,18 @@
 import { useState } from "react"
 
-import { BackLink } from "../components/BackLink"
-import { ButtonForm } from "../components/ButtonForm"
-import { TextArea } from "../components/TextArea"
-
 import { Header } from "../../../components/Header"
 import { IngredientsDish } from "../../../components/IngredientsDish"
 import { Footer } from "../../../components/Footer"
 
+import { BackLink } from "../components/BackLink"
+import { FormDish } from "../components/FormDish"
+import { TextArea } from "../components/TextArea"
+import { ButtonForm } from "../components/ButtonForm"
+
+
 import uploadImg from "../../../assets/upload.svg"
 
-import { Container, FormAdd, SectionOne, SectionTwo, Wrapper, TextAreaContainer, ButtonsContainer, WrapperFile, IngredientsContainer } from "./styles"
+import { Container, ButtonsContainer, SectionForm, Wrapper, WrapperFile, IngredientsContainer, TextAreaContainer } from "../styles"
 import { api } from "../../../service/api"
 
 export function AddDish() {
@@ -114,10 +116,10 @@ export function AddDish() {
                     title="voltar"
                 />
 
-                <FormAdd>
+                <FormDish>
                     <fieldset>Adicionar prato</fieldset>
 
-                    <SectionOne>
+                    <SectionForm>
                         <WrapperFile>
                             <p>Imagem do prato</p>
 
@@ -158,10 +160,10 @@ export function AddDish() {
                                 <option value="bebidas">Bebidas</option>
                             </select>
                         </Wrapper>
-                    </SectionOne>
+                    </SectionForm>
 
 
-                    <SectionTwo>
+                    <SectionForm>
                         <IngredientsContainer>
                             <p>Ingredientes</p>
                             <div>
@@ -187,7 +189,7 @@ export function AddDish() {
                             </div>
                         </IngredientsContainer>
 
-                        <Wrapper className="teste">
+                        <Wrapper className="size-default">
                             <label htmlFor="">Preço</label>
                             <input
                                 type="number"
@@ -196,7 +198,7 @@ export function AddDish() {
                                 value={dishPrice}
                             />
                         </Wrapper>
-                    </SectionTwo>
+                    </SectionForm>
 
                     <TextAreaContainer>
                         <legend>Descrição</legend>
@@ -208,7 +210,6 @@ export function AddDish() {
                         </TextArea>
                     </TextAreaContainer>
 
-
                     <ButtonsContainer>
                         <ButtonForm
                             title="Salvar alterações"
@@ -216,7 +217,7 @@ export function AddDish() {
                             disabled={recording}
                         />
                     </ButtonsContainer>
-                </FormAdd>
+                </FormDish>
             </main>
 
             <Footer />

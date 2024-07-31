@@ -76,7 +76,10 @@ export function Card({ url, dishName, description, price, id }) {
             <Link to={`/dish/${id}`}>
                 {dishName} &#62;
             </Link>
-            <p>{description}</p>
+            
+            <article>
+                <p>{description}</p>
+            </article>
 
             <PriceContainer>{formattedPrice}</PriceContainer>
 

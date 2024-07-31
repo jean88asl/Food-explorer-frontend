@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import { Container, Content, Banner, BannerContent } from "./styles";
+import { Container, Content, Banner } from "./styles";
 import { Footer } from "../../components/Footer"
 import { Section } from "../../components/Section"
 import banner from "../../assets/banner.png"
@@ -33,15 +33,15 @@ export function Home() {
     return (
         <Container>
             <Header />
+            
             <Content>
                 <Banner>
-                    <BannerContent>
-                        <div>
+                    <div></div>
+                    <img src={banner} alt="" />
+                    <section>
                             <h2>Sabores inigualáveis</h2>
                             <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
-                        </div>
-                        <img src={banner} alt="" />
-                    </BannerContent>
+                     </section> 
                 </Banner>
 
                 <Section title="Refeições">

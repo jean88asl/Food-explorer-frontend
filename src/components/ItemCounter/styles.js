@@ -1,9 +1,11 @@
 import { styled } from "styled-components"
+import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 2rem;
+    width: 100%;
 `
 
 export const GroupButtons = styled.div`
@@ -13,7 +15,7 @@ export const GroupButtons = styled.div`
     font-size: 1.2rem;
 
     span {
-        color: ${({theme}) => theme['LIGHT-300']};
+        color: ${({ theme }) => theme['LIGHT-300']};
         font-size: 1.5rem;
     }
 
@@ -31,7 +33,7 @@ const buttonDefault = styled.button`
     align-items: center;
     border: 0;
     cursor: pointer;
-    color: ${({theme}) => theme['LIGHT-100']};
+    color: ${({ theme }) => theme['LIGHT-100']};
 `
 
 export const QuantityButton = styled(buttonDefault)`
@@ -42,5 +44,12 @@ export const ExternalButton = styled(buttonDefault)`
     gap: 4px;
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
-    background: ${({theme}) => theme['TOMATO-100']};
+    background: ${({ theme }) => theme['TOMATO-100']};
+
+    @media (max-width:${DEVICE_BREAKPOINTS.MD}) {        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;        
+    }
 `

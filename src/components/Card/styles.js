@@ -1,8 +1,9 @@
 import styled from "styled-components"
+import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
     position: relative;
-    width: 19rem;
+    width: 100%;
     min-height: 28.875rem;
     
     display: flex;
@@ -13,7 +14,7 @@ export const Container = styled.div`
     border-radius: 8px;
     padding: 1rem 1.125rem;
 
-    background: ${({theme}) => theme['DARK-200']};
+    background: ${({ theme }) => theme['DARK-200']};
 
     img {
         width: 11rem;
@@ -25,29 +26,38 @@ export const Container = styled.div`
     a {
         font-size: 1.5rem;
         font-weight: bold;
-        color: ${({theme}) => theme['LIGHT-300']};
+        color: ${({ theme }) => theme['LIGHT-300']};
         font-family: 'Poppins', sans-serif;
         text-align: center;
     }
 
-    p {
-        color: ${({theme}) => theme['LIGHT-400']};
+    article {
+        p {
+            color: ${({ theme }) => theme['LIGHT-400']};
+            text-align: center;
+        }
+    }
+        
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        article {
+            display: none;
+        }
     }
 `
 
 export const PriceContainer = styled.span`
     display: block;
     font-size: 2.5rem;
-    color: ${({theme}) => theme['CAKE-200']};
+    color: ${({ theme }) => theme['CAKE-200']};
 `
 
 export const IconCard = styled.div`
     position: absolute;
     font-size: 22px;
     top: 16px; right: 18px;
-    color: ${({theme}) => theme['LIGHT-300']};
+    color: ${({ theme }) => theme['LIGHT-300']};
     cursor: pointer;
-
 
     button {
         background: transparent;
@@ -84,7 +94,7 @@ export const ButtonGroup = styled.div`
         font-size: 1.2rem;
 
         span {
-            color: ${({theme}) => theme['LIGHT-300']};
+            color: ${({ theme }) => theme['LIGHT-300']};
             font-size: 1.5rem;
         }
 
@@ -94,7 +104,7 @@ export const ButtonGroup = styled.div`
             background: transparent;
             border: 0;
             cursor: pointer;
-            color: ${({theme}) => theme['LIGHT-100']};
+            color: ${({ theme }) => theme['LIGHT-100']};
         }
     }
 
@@ -105,8 +115,8 @@ export const ButtonGroup = styled.div`
         padding: 0.75rem 1.5rem;
         border: 0;
         border-radius: 5px;
-        background: ${({theme}) => theme['TOMATO-100']};
-        color: ${({theme}) => theme['LIGHT-100']};
+        background: ${({ theme }) => theme['TOMATO-100']};
+        color: ${({ theme }) => theme['LIGHT-100']};
         cursor: pointer;
     }
 `

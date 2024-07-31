@@ -1,23 +1,13 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints";
 
 export const Container = styled.div`
     width: 100%;
 
     main {
-        max-width: 70rem;
-        margin: 0 auto 116px;
-    }
-`
-
-export const ButtonsContainer = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 2rem;
-
-    .delete {
-        background: ${({ theme }) => theme['DARK-800']};       
+        max-width: 71rem;
+        margin: 0 auto 3.3125rem;
+        padding: 0 1.25rem; 
     }
 `
 
@@ -28,8 +18,16 @@ export const SectionForm = styled.section`
     display: flex;
     gap: 2rem;
 
-    .teste {
+    .size-default {
         width: 15.6875rem;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        flex-direction: column;
+
+        .size-default {
+            width: 100%;
+        }
     }
 `
 
@@ -90,6 +88,10 @@ export const WrapperFile = styled.div`
             display: none;
         }
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        max-width: 100%;
+    }
 `
 
 export const IngredientsContainer = styled.div`
@@ -125,5 +127,16 @@ export const TextAreaContainer = styled.div`
     legend {
         color: ${({ theme }) => theme['LIGHT-400']};
         margin-bottom: 1rem;
+    }
+`
+export const ButtonsContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+
+    .delete {
+        background: ${({ theme }) => theme['DARK-800']};       
     }
 `

@@ -1,17 +1,19 @@
 import { styled } from "styled-components"
+import { DEVICE_BREAKPOINTS } from "../../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
     width: 100%;
 
     main {
-        max-width: 70rem;
-        margin: 0 auto 116px;
+        max-width: 71rem;
+        margin: 0 auto 3.3125rem;
+        padding: 0 1.25rem; 
     }
 `
 
-export const BackLink = styled.div`
+export const BackLink = styled.section`
     display: block;
-    width: 70rem;
+    width: 100%;
     margin: 2.5rem auto;
     
     a {
@@ -60,14 +62,24 @@ const DefaultSection = styled.section`
 
     display: flex;
     gap: 2rem;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        flex-direction: column;
+    }
 `
 
 export const SectionOne = styled(DefaultSection)`
 `
 
 export const SectionTwo = styled(DefaultSection)`
-    .teste {
+    .size-default {
         width: 15.6875rem;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        .size-default {
+            width: 100%;
+        }
     }
 `
 
@@ -98,12 +110,15 @@ export const WrapperFile = styled.div`
             display: none;
         }
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        max-width: 100%;
+    }
 `
 
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-
 
     label {
         margin-bottom: 1rem;
@@ -127,7 +142,8 @@ export const Wrapper = styled.div`
         border-radius: 8px;
         background: ${({ theme }) => theme['DARK-800']};
         color: ${({ theme }) => theme['LIGHT-500']}
-    }    
+    } 
+    
 `
 
 export const TextAreaContainer = styled.div`

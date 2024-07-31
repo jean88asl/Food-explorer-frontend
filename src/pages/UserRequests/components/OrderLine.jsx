@@ -8,7 +8,7 @@ export function OrderLine({ nameDish, quantity, price, urlImage, ...rest}) {
                 <OrderImage src={urlImage} alt="" />
 
                 <ItemInfo>
-                    <p>{quantity}x  {nameDish} <span>R${price}</span></p>
+                    <p>{quantity}x  {nameDish} <span>{price}</span></p>
                     <button {...rest}>Excluir</button>
                 </ItemInfo>
             </div>

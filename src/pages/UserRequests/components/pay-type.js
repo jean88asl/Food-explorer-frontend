@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../../styles/layoutBreakpoints";
 
 export const Container = styled.section`
     width: 100%;
@@ -9,8 +10,7 @@ export const Container = styled.section`
 `
 
 export const Header = styled.header`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
 
     button {
         width: 100%;
@@ -50,6 +50,7 @@ export const Header = styled.header`
 
 export const Content = styled.div`
     padding: 3.6875rem 5.6875rem 3rem;
+    height: auto;
 
     figure {
         display: flex;
@@ -65,6 +66,18 @@ export const Content = styled.div`
         section {
             display: flex;
             gap: 1.1rem;
+        }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        padding: 3rem 1.5rem 3rem;
+
+        img{
+            width: 179px;
+            height: 179px;
+        }
+        
+        form {
         }
     }
 `

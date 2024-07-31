@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
+import { Header } from "../../../components/Header"
 import { IngredientsDish } from "../../../components/IngredientsDish"
 import { Footer } from "../../../components/Footer"
 
-import { Header } from "../../../components/Header"
 import { BackLink } from "../components/BackLink"
 import { FormDish } from "../components/FormDish"
 import { TextArea } from "../components/TextArea"
@@ -12,7 +12,7 @@ import { ButtonForm } from "../components/ButtonForm"
 
 import uploadImg from "../../../assets/upload.svg"
 
-import { Container, ButtonsContainer, SectionForm, Wrapper, WrapperFile, IngredientsContainer, TextAreaContainer } from "./styles"
+import { Container, ButtonsContainer, SectionForm, Wrapper, WrapperFile, IngredientsContainer, TextAreaContainer } from "../styles"
 import { api } from "../../../service/api"
 
 // import { useDish } from "../../../contexts/DishContext"
@@ -222,7 +222,7 @@ export function EditDish() {
                             </div>
                         </IngredientsContainer>
 
-                        <Wrapper className="teste">
+                        <Wrapper className="size-default">
                             <label htmlFor="">Preço</label>
                             <input
                                 type="number"

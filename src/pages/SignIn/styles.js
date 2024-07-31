@@ -2,9 +2,10 @@ import { styled } from "styled-components"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const SignInContainer = styled.div`
-    max-width: 1120px;
-    height: 100vh;
+    max-width: 71rem;
     margin: 0 auto;
+    padding: 0 1.25rem;  
+    height: 100vh;
     color: ${({ theme }) => theme['LIGHT-400']};
 
     display: flex;
