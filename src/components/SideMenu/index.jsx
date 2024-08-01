@@ -1,21 +1,25 @@
-import { Container, LogoContainer } from "./styles"
+/* eslint-disable react/prop-types */
+import { Container, Header, MenuContent } from "./styles"
+import { InputSearch } from "../../components/InputSearch"
 
-import { Logo } from "../../assets/logo.svg"
+import { RiCloseFill } from "react-icons/ri";
 
-export function SideMenu() {
+export function SideMenu({ menuIsOpen, onCloseMenu }) {
     return (
-        <Container>
+        <Container data-menu-is-open={menuIsOpen}>
+            <Header>
+                <button
+                    onClick={onCloseMenu}
+                    type="button"
+                >
+                    <RiCloseFill />
+                    <span>Menu</span>
+                </button>
+            </Header>
 
-            <LogoContainer>
-                <img src={Logo} alt="" />
-                <div>
-                    <h1>food explorer</h1>
-                    {
-                        // [USER_ROLE.ADMIN].includes(user.role) &&
-                        <p>admin</p>
-                    }
-                </div>
-            </LogoContainer>
+            <MenuContent>
+                <InputSearch />
+            </MenuContent>
         </Container>
     )
 }

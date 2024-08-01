@@ -22,12 +22,12 @@ export function SwiperComponent({ items }) {
                 breakpoints={{
                     425: {
                       slidesPerView: 2,
-                      spaceBetween: 34,
+                      spaceBetween: 18,
 
                     },
                     768: {
                       slidesPerView: 3,
-                      spaceBetween: 12,
+                      spaceBetween: 24,
                       navigation: false,
                     },
                     1024: {

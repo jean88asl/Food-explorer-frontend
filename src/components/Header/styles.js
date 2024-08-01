@@ -218,7 +218,7 @@ export const BtnMenu = styled.button`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        display: flex;
+        display: block;
     }
 `
 

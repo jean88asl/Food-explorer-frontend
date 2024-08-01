@@ -12,7 +12,7 @@ export const SwiperContainer = styled.div`
         bottom: 0;
         width: 45px; 
         pointer-events: none;
-        z-index: 2;
+        z-index: 1;
     }
 
     &::before {

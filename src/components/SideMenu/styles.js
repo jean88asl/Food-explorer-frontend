@@ -1,54 +1,47 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints";
 // import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
-export const Container = styled.div`
-    max-width: 100%;
-    margin: 1.75rem;
+export const Container = styled.aside`
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        display: none;
+
+        &[data-menu-is-open="true"] {
+            display: block;
+        }
+    }   
 `
 
-export const MenuButton = styled.button`
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-
-    svg {
-        margin-left: 6rem;
-        color: ${({ theme }) => theme['LIGHT-500']};
-        font-size: 1.5rem;
-    }
-`
-
-export const LogoContainer = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    svg {
-        height: 1.875rem;
-        width: 1.875rem;
-    }
-
-    div {
+export const Header = styled.header`
+    width: 100%;
+    background-color: ${({ theme }) => theme['DARK-700']};
+    padding: 3.5rem 1.75rem 1.5rem;
+    
+    button {
+        color: ${({ theme }) => theme['LIGHT-100']};
+        background: transparent;
+        border: 0;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        font-size: 1.3125rem;
 
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-            font-weight: bold;
-
-            color: ${({ theme }) => theme['LIGHT-100']}
-        } 
-
-        p {
-            font-size: 0.75rem;
-            font-family: 'Roboto';
-            text-align: right;
-            color: ${({ theme }) => theme['CAKE-200']};
+        svg{
+            font-size: 18px;
         }
     }
-    
+`
+
+export const MenuContent = styled.section`
+    width: 100%;
+    height: 100%;
+    background: ${({ theme }) => theme['DARK-400']};
+    padding: 2.25rem 1.75rem 1rem;    
 `

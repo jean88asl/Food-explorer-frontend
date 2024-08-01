@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Logo from "../../assets/logo.svg"
 import Receipt from "../../assets/receipt.svg";
 
@@ -14,7 +15,7 @@ import { api } from "../../service/api";
 
 import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, SearchContainer, BtnMenu } from "./styles"
 
-export function Header() {
+export function Header({ onOpenMenu }) {
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
 
@@ -60,7 +61,7 @@ export function Header() {
     return (
         <Container>
             <HeaderContainer>
-                <BtnMenu>
+                <BtnMenu onClick={onOpenMenu}>
                     <BsList />
                 </BtnMenu>
 
@@ -114,7 +115,7 @@ export function Header() {
                                 <img src={Receipt} alt="" />
                                 <span>Pedidos (0)</span>
                             </ButtonRequests>
-                          </>
+                        </>
                 }
 
                 <ButtonSignOut onClick={handleSignOut}>
