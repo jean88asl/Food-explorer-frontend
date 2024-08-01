@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-import { Header } from "../../../components/Header"
 import { IngredientsDish } from "../../../components/IngredientsDish"
-import { Footer } from "../../../components/Footer"
 
 import { BackLink } from "../components/BackLink"
 import { FormDish } from "../components/FormDish"
@@ -144,8 +142,6 @@ export function EditDish() {
 
     return (
         <Container>
-            <Header />
-
             <main>
                 <BackLink
                     title="voltar"
@@ -254,8 +250,6 @@ export function EditDish() {
                     </ButtonsContainer>
                 </FormDish>
             </main>
-
-            <Footer />
         </Container>
     )
 }

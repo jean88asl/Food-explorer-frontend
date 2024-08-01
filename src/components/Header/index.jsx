@@ -5,38 +5,17 @@ import Receipt from "../../assets/receipt.svg";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles"
 
-import { RiSearchLine } from "react-icons/ri";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { BsList } from "react-icons/bs";
 
-import { useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { api } from "../../service/api";
+import { useNavigate } from "react-router-dom";
 
-import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, SearchContainer, BtnMenu } from "./styles"
+import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu } from "./styles"
+import { InputSearch } from "../InputSearch";
 
 export function Header({ onOpenMenu }) {
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
-
-    const [search, setSearch] = useState("")
-    const [results, setResults] = useState([])
-    const [showResults, setShowResults] = useState(false)
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            handleSearch()
-        }
-    };
-
-    async function handleSearch() {
-        if (search.length > 2) {
-            const response = await api(`/dish?name=${search}`)
-
-            setResults(response.data)
-            setShowResults(true)
-        }
-    }
 
     function handleNavigate() {
         navigate("/userrequests")
@@ -50,13 +29,6 @@ export function Header({ onOpenMenu }) {
         navigate("/")
         signOut()
     }
-
-    useEffect(() => {
-        if (search.length === 0) {
-            setShowResults(false)
-            setResults([])
-        }
-    }, [search, setResults])
 
     return (
         <Container>
@@ -76,34 +48,7 @@ export function Header({ onOpenMenu }) {
                     </div>
                 </LogoContainer>
 
-                <SearchContainer>
-                    <input
-                        placeholder="Busque por pratos ou ingredientes"
-                        onChange={e => setSearch(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        onInput={handleSearch}
-                    />
-
-                    <button onClick={handleSearch}>
-                        <RiSearchLine />
-                    </button>
-
-
-                    {
-                        showResults && (
-                            <div className="results">
-                                {
-                                    results.map((item, index) => (
-                                        <Link to={`/dish/${item.id}`} key={index}>
-                                            <p >{item.dish_name}</p>
-                                            <span>ver prato &#62;</span>
-                                        </Link>
-                                    ))
-                                }
-                            </div>
-                        )
-                    }
-                </SearchContainer>
+                <InputSearch />
 
                 {
                     [USER_ROLE.ADMIN].includes(user.role) ?

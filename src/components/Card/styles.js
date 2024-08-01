@@ -40,6 +40,7 @@ export const Container = styled.div`
         
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        align-items: center;
         article {
             display: none;
         }

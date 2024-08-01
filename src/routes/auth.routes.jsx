@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { Home } from '../pages/Home'
 import { Dish } from '../pages/Dish'
 import { UserRequests } from "../pages/UserRequests"
+import { DefaultContainer } from "../layouts/DefaultLayout"
 
 import { DishProvider } from "../contexts/DishContext"
 import { NotFound } from "../pages/NotFound"
@@ -13,15 +14,17 @@ export function AuthRoutes() {
     return (
         <DishProvider>
             <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/dish/:id' element={<Dish />} />
-                <Route path='/userrequests' element={<UserRequests />} />
+                    <Route path="/" element={<DefaultContainer />}>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/dish/:id' element={<Dish />} />
+                        <Route path='/userrequests' element={<UserRequests />} />
+                    </Route>
 
-                {user ? (
-                    <Route path="*" element={<NotFound />} />
-                ) : (
-                    <Route path="*" element={<Navigate to="/" />} />
-                )}
+                    {user ? (
+                        <Route path="*" element={<NotFound />} />
+                    ) : (
+                        <Route path="*" element={<Navigate to="/" />} />
+                    )}
             </Routes>
         </DishProvider>
     )

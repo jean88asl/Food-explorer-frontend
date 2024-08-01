@@ -64,7 +64,7 @@ export const Container = styled.div`
         }
     }
 
-    @media (max-width: ${DEVICE_BREAKPOINTS}) {
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         display: none;
     }
 `

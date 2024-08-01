@@ -13,9 +13,8 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     grid-area: 'content';
-    max-width: 71rem;
-    margin: 0 auto;
-    padding: 0 1.25rem;   
+    max-width: 100%;
+    margin: 0 auto 1.5rem; 
 `
 
 export const Banner = styled.div`
@@ -89,44 +88,3 @@ export const Banner = styled.div`
 
     }
 `
-
-// export const BannerContent = styled.div`
-//     margin: auto;
-
-//     div {
-//         display: flex;
-//         flex-direction: column;
-
-//         margin-top: 10.25rem;
-        
-//         width: 70rem; 
-//         height: 16.25rem;
-
-//         border-radius: 8px;
-
-//         padding: 6rem 0 0 37.375rem;
-//         background: ${({ theme }) => theme['GRADIENT-200']};
-
-//         font-family: 'Poppins';
-
-//         position: absolute;
-//         z-index: 1;
-
-//         
-//     }
-
-//     img {
-//         width: 41rem;
-//         height: 25.75rem;
-//         position: relative;
-//         top: 1.6rem; left: -4.2rem;
-//         z-index: 1;
-//     }
-
-//     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-//         img {
-//             width: 191px;
-//             height: 149px;
-//         }
-//     }
-// `

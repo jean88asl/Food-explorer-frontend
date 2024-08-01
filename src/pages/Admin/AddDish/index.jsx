@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Header } from "../../../components/Header"
 import { IngredientsDish } from "../../../components/IngredientsDish"
-import { Footer } from "../../../components/Footer"
 
 import { BackLink } from "../components/BackLink"
 import { FormDish } from "../components/FormDish"
@@ -109,7 +107,6 @@ export function AddDish() {
 
     return (
         <Container>
-            <Header />
 
             <main>
                 <BackLink
@@ -219,9 +216,6 @@ export function AddDish() {
                     </ButtonsContainer>
                 </FormDish>
             </main>
-
-            <Footer />
-
         </Container>
     )
 }

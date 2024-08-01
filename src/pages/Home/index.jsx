@@ -1,7 +1,4 @@
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer"
 import { Section } from "../../components/Section"
-import { SideMenu } from "../../components/SideMenu"
 import banner from "../../assets/banner.png"
 import { api } from "../../service/api"
 
@@ -12,7 +9,6 @@ import { Container, Content, Banner } from "./styles";
 
 export function Home() {
     const [dishData, setDishData] = useState([])
-    const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
@@ -33,13 +29,6 @@ export function Home() {
     
     return (
         <Container>
-            <SideMenu 
-                menuIsOpen={menuIsOpen}
-                onCloseMenu={() => setMenuIsOpen(false)}
-            />
-            
-            <Header onOpenMenu={() => setMenuIsOpen(true)} />
-
             <Content>
                 <Banner>
                     <div></div>
@@ -78,7 +67,7 @@ export function Home() {
                     {
                         sizeArrayDrinks ? (
                             <div>
-                                <SwiperComponent items={desserts} />
+                                <SwiperComponent items={drinks} />
                             </div>
                         ) : (
                             <></>
@@ -86,7 +75,6 @@ export function Home() {
                     }
                 </Section>
             </Content>
-            <Footer />
         </Container>
     )
 }

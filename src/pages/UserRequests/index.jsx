@@ -1,6 +1,3 @@
-import { Footer } from "../../components/Footer"
-import { Header } from "../../components/Header"
-
 import { OrderLine } from "./components/OrderLine"
 
 import { Container, OderInformation, ContainerContent, PayInfo } from "./styles"
@@ -36,8 +33,6 @@ export function UserRequests() {
     }, []);
     return (
         <Container>
-            <Header />
-
             <main>
                 <ContainerContent>
                     <OderInformation>
@@ -69,8 +64,6 @@ export function UserRequests() {
                     </PayInfo>
                 </ContainerContent>
             </main>
-
-            <Footer />
         </Container>
     )
 }

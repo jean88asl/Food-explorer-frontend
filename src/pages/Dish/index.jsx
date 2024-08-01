@@ -1,7 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import { Header } from "../../components/Header"
-import { Footer } from "../../components/Footer"
 import { Tag } from "../../components/Tag"
 import { ItemCounter } from "../../components/ItemCounter"
 import { Button } from "../../components/Button"
@@ -45,8 +43,6 @@ export function Dish() {
 
     return (
         <Container>
-            <Header />
-
             <main>
                 <DishLink>
                     <Link to={'/'}>
@@ -96,8 +92,6 @@ export function Dish() {
                     </Description>
                 </DishDetails>
             </main>
-
-            <Footer />
         </Container>
     )
 }
