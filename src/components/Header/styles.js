@@ -36,94 +36,29 @@ export const HeaderContainer = styled.header`
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         width: 100%;
         grid-template-columns: max-content auto max-content;
-        padding: 2rem 1.25rem 1.5rem;
-        align-items: end;
-        gap: 0
+        padding: 2rem 1.5rem;
+        align-items: center;
+        gap: 0;
+
+        .admin-login {
+            display: none;
+        }
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-        width: 372px;
-        padding: 2rem 0rem 1.5rem;
-        padding-top: 3.5rem;
-    }
-`
-
-export const SearchContainer = styled.div`
-    width: auto;
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: ${({ theme }) => theme['DARK-900']};
-    border-radius: 8px;
-
-    button{
-        display: flex;
-        align-items: center;
-        margin-right: 1rem;
-        background-color: transparent;
-        border: 0;
-        cursor: pointer;
-
-        svg {
-        margin-left: 6rem;
-        color: ${({ theme }) => theme['LIGHT-500']};
-        font-size: 1.5rem;
-    }
-    }
-
-    input {
-        width: 100%;
-        height: 3rem;
-        padding: 0.875rem 0 0.875rem 1rem;
-        border: 0;
-        border-radius: 8px;
-        color: ${({ theme }) => theme['LIGHT-400']};
-        background: ${({ theme }) => theme['DARK-900']};
-
-        &::placeholder {
-            color: ${({ theme }) => theme['LIGHT-500']};
-        }
-    }
-
-    div {
-        position: absolute;
-        top: 3rem;
-        width: 100%;
-        background: ${({ theme }) => theme['DARK-900']};
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-height: 200px;
-        overflow-y: auto;
-        z-index: 2;
-
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            padding: 0.875rem ;
-            text-decoration: none;
-            color: white;
-        }
-
-        a:hover {
-            background-color: #FFFFFF20; 
-        }
-    }
-
-    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        display: none;
+        max-width: 372px;
+        padding: 3.5rem 0rem 1.5rem;
     }
 `
 
 export const ButtonRequests = styled.button`
     width: 13.5rem;
     height: 3.5rem;
-
+    
     display: flex;
     align-items: center;
     justify-content: center;
-
+    
     font-family: 'Poppins';
     font-size: 0.875rem;
     border: 0;
@@ -131,9 +66,22 @@ export const ButtonRequests = styled.button`
     background: ${({ theme }) => theme['TOMATO-100']};
     color: ${({ theme }) => theme['LIGHT-100']};
     cursor: pointer;
+    position: relative;
+    
+    .user-login {
+        position: absolute;
+        top: -20%; right: -5px;
+        display: none;
 
-    img {
-        margin-right: 4px;
+        width: 20px;
+        height: 20px;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: ${({theme}) => theme['TOMATO-100']};
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
@@ -143,6 +91,10 @@ export const ButtonRequests = styled.button`
 
         span {
             display: none;
+        }
+
+        .user-login {
+            display: flex;
         }
     }
 `
@@ -187,7 +139,6 @@ export const LogoContainer = styled.div`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        /* width: 100%; */
         gap: 6px;
         justify-content: center;
 
@@ -211,10 +162,10 @@ export const BtnMenu = styled.button`
     border: 0;
     cursor: pointer;
     display: none;
-    width: 2rem;
 
     svg {
-        color: ${({ theme }) => theme['LIGHT-100']};
+        font-size: 10px;
+        
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {

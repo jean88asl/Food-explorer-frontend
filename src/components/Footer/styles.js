@@ -40,6 +40,6 @@ export const FooterContent = styled.footer`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-        width: 376px;
+        max-width: 376px;
     }
 `

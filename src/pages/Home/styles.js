@@ -12,7 +12,7 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-    grid-area: 'content';
+    grid-area: content;
     max-width: 100%;
     margin: 0 auto 1.5rem; 
 `
@@ -38,7 +38,8 @@ export const Banner = styled.div`
         max-width: 41rem;
         max-height: 25.75rem;
         position: relative;
-        top: -3.9rem; left: -4.2rem;
+        top: -3.9rem; 
+        left: -4.2rem;
         z-index: 1;
     }
 
@@ -60,8 +61,11 @@ export const Banner = styled.div`
          }
     }
 
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        max-width: 100%;
+    }
+
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-        width: 372px;
         margin-top: 44px;
 
         div {

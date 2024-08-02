@@ -52,13 +52,14 @@ export function Header({ onOpenMenu }) {
 
                 {
                     [USER_ROLE.ADMIN].includes(user.role) ?
-                        <ButtonRequests onClick={handleNavigateAdmin}>
+                        <ButtonRequests onClick={handleNavigateAdmin} className="admin-login">
                             Novo Prato
                         </ButtonRequests>
                         : <>
                             <ButtonRequests onClick={handleNavigate}>
                                 <img src={Receipt} alt="" />
                                 <span>Pedidos (0)</span>
+                                <div className="user-login">0</div>
                             </ButtonRequests>
                         </>
                 }

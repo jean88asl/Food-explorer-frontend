@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.section`
-    max-width: 71rem;
-    margin: 0 auto 1.5rem;
+    max-width: 69rem;
+    margin-bottom: 1.5rem;
     overflow-x: none;
     
     h2 {
@@ -22,10 +22,16 @@ export const Container = styled.section`
         --swiper-navigation-color: white;
     }
 
+    @media (max-width: 1024px) {
+        max-width: 990px;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        max-width: 750px;
+    }
+
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-        width: 100%;
-        margin-left: 44px;
-        max-width: calc(100vw - ((100vw - 426px) / 2));
+        width: 390px;
 
         h2 {
             font-size: 1.5rem;
