@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { appear } from "../../../styles/animations"
 
 export const Container = styled.div`
     width: 100%;
+
+    animation: ${appear} 1200ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
     div {
         height: 104px;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { appear } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
@@ -22,6 +23,7 @@ export const HeaderContainer = styled.header`
     display: grid;
     grid-template-columns: max-content auto max-content max-content;
     align-items: center;
+    animation: ${appear} 800ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
     gap: 32px;
 
@@ -81,7 +83,7 @@ export const ButtonRequests = styled.button`
 
         border-radius: 50%;
 
-        background: ${({theme}) => theme['TOMATO-100']};
+        background: ${({ theme }) => theme['TOMATO-100']};
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
@@ -114,7 +116,7 @@ export const ButtonSignOut = styled.button`
 export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px;    
 
     img {
         height: 1.875rem;
@@ -127,7 +129,7 @@ export const LogoContainer = styled.div`
             font-size: 1.5rem;
             font-weight: bold;
 
-            color: ${({ theme }) => theme['LIGHT-100']}
+            color: ${({ theme }) => theme['LIGHT-100']};
         } 
 
         p {

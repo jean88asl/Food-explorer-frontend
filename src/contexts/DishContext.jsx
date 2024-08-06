@@ -5,7 +5,7 @@ import { useAuth } from "../hooks/auth";
 
 const DishContext = createContext({});
 
-function priceFormatting (price) {
+function priceFormatting(price) {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -15,9 +15,10 @@ function priceFormatting (price) {
 
 function DishProvider({ children }) {
   const [items, setItems] = useState([]);
+  const [itemsQuantity, setItemsQuantity] = useState(0)
   const { user } = useAuth();
 
-  const orderInfo = (total, quantity, dishId, nameDish, url) => {
+  function orderInfo(total, quantity, dishId, nameDish, url) {
     const itemExist = items.find(dish => dish.id === dishId);
 
     if (itemExist) {
@@ -33,20 +34,31 @@ function DishProvider({ children }) {
       user_id: user.id
     };
 
-    const updatedItems = [...items, item];
+    const updatedItems = [...items, item]
+    setItems(updatedItems)
+    localStorage.setItem("@foodexplorer:requests", JSON.stringify(updatedItems))
+    setItemsQuantity(updatedItems.length)
+  }
+
+  function removeItem(itemId) {
+    const updatedItems = items.filter(item => item.id !== itemId);
     setItems(updatedItems);
     localStorage.setItem("@foodexplorer:requests", JSON.stringify(updatedItems));
-  };
+    setItemsQuantity(updatedItems.length);
+  }
 
   useEffect(() => {
     const storedItems = localStorage.getItem("@foodexplorer:requests");
+
     if (storedItems) {
-      setItems(JSON.parse(storedItems));
+      const parsedItems = JSON.parse(storedItems);
+      setItems(parsedItems);
+      setItemsQuantity(parsedItems.length);
     }
-  }, []);
+  }, []); 
 
   return (
-    <DishContext.Provider value={{ priceFormatting, orderInfo, items }}>
+    <DishContext.Provider value={{ priceFormatting, orderInfo, items, itemsQuantity, removeItem }}>
       {children}
     </DishContext.Provider>
   );

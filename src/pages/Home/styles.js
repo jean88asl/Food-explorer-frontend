@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { appear } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
@@ -32,6 +33,7 @@ export const Banner = styled.div`
         height: 16.25rem;
         background: ${({ theme }) => theme['GRADIENT-200']};
         border-radius: 8px;
+        animation: ${appear} 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }   
 
     img {
@@ -41,12 +43,14 @@ export const Banner = styled.div`
         top: -3.9rem; 
         left: -4.2rem;
         z-index: 1;
+        animation: ${appear} 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }
 
     section {
         position: relative;
         margin-left: -6.25rem;
-        color: ${({theme}) => theme['LIGHT-300']};
+        color: ${({ theme }) => theme['LIGHT-300']};
+        animation: ${appear} 1.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
         h2 {
             font-family: 'Poppins';
@@ -80,7 +84,7 @@ export const Banner = styled.div`
 
         section {
             margin-left: -1rem;
-
+           
             h2 {
                 font-size: 1.4rem;
             }
@@ -90,5 +94,5 @@ export const Banner = styled.div`
             }
         }
 
-    }
+    }   
 `

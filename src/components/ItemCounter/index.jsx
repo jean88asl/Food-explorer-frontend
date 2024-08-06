@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { useDish } from "../../contexts/DishContext"
 
-export function ItemCounter({ dishId, price, nameDish, url }) {
+export function ItemCounter({ dishId, price, nameDish, url, homePrice = 0}) {
     const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState(0)
     const [formattedPrice, setFormattedPrice] = useState("")
@@ -20,7 +20,7 @@ export function ItemCounter({ dishId, price, nameDish, url }) {
             let quantityPartial = quantity + 1
             setQuantity(quantityPartial)
 
-            let totalPartial = quantityPartial * price
+            let totalPartial = quantityPartial * price || homePrice
             setTotal(totalPartial)
         }
     }
@@ -30,7 +30,7 @@ export function ItemCounter({ dishId, price, nameDish, url }) {
             let quantityPartial = quantity - 1
             setQuantity(quantityPartial)
 
-            let totalPartial = quantityPartial * price
+            let totalPartial = quantityPartial * price || homePrice
             setTotal(totalPartial)
         } else {
             alert("A quantidade minima é de um item.")

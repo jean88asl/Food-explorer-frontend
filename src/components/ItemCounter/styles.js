@@ -1,4 +1,5 @@
 import { styled } from "styled-components"
+import { appear } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
@@ -6,6 +7,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 2rem;
     width: 100%;
+    animation: ${appear} 1650ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 `
 
 export const GroupButtons = styled.div`

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { heartBeat } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
@@ -80,44 +81,6 @@ export const IconCard = styled.div`
 
     .liked {
         color: red;
-    }
-`
-
-export const ButtonGroup = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    div {
-        display: flex;
-        align-items: center;
-        gap: 0.875rem;
-        font-size: 1.2rem;
-
-        span {
-            color: ${({ theme }) => theme['LIGHT-300']};
-            font-size: 1.5rem;
-        }
-
-        button {
-            display: flex;
-            align-items: center;
-            background: transparent;
-            border: 0;
-            cursor: pointer;
-            color: ${({ theme }) => theme['LIGHT-100']};
-        }
-    }
-
-    .include {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        padding: 0.75rem 1.5rem;
-        border: 0;
-        border-radius: 5px;
-        background: ${({ theme }) => theme['TOMATO-100']};
-        color: ${({ theme }) => theme['LIGHT-100']};
-        cursor: pointer;
+        animation: ${heartBeat} 2.5s ease-in-out both;
     }
 `

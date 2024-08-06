@@ -9,17 +9,17 @@ import { useDish } from "../../contexts/DishContext"
 
 export function UserRequests() {
     const [dataDish, setDataDish] = useState([])
+    const [totalOrders, setTotalOrders] = useState("")
 
-    const { priceFormatting } = useDish()
+    const { priceFormatting, removeItem } = useDish()
 
     function handleRemoveItem(id) {
         const newItemList = dataDish.filter(item => item.id !== id);
         setDataDish(newItemList);
-
-        
+        removeItem(id)
         localStorage.setItem("@foodexplorer:requests", JSON.stringify(newItemList));
 
-        if(newItemList) {
+        if (newItemList) {
             localStorage.removeItem("@foodexplorer:requests")
         }
     }
@@ -30,7 +30,19 @@ export function UserRequests() {
         if (dataStorage) {
             setDataDish(JSON.parse(dataStorage));
         }
-    }, []);
+    }, [])
+
+    const allPrices = dataDish.map(item => item.total)
+    const initialValue = 0;
+    const totalPartialOrders = allPrices.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue,
+    )
+
+    useEffect(() => {
+        setTotalOrders(priceFormatting(totalPartialOrders))
+    }, [setTotalOrders, totalPartialOrders, priceFormatting])
+
     return (
         <Container>
             <main>
@@ -54,7 +66,11 @@ export function UserRequests() {
                         }
 
                         <footer>
-                            {/* {items.total} */}
+                          {
+                            <>                            
+                                Total: {totalOrders}
+                            </>
+                          }  
                         </footer>
                     </OderInformation>
 

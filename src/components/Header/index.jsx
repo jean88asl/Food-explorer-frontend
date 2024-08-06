@@ -10,12 +10,16 @@ import { BsList } from "react-icons/bs";
 
 import { useNavigate } from "react-router-dom";
 
+import { useDish } from "../../contexts/DishContext"
+
 import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu } from "./styles"
 import { InputSearch } from "../InputSearch";
 
 export function Header({ onOpenMenu }) {
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
+
+    const { itemsQuantity } = useDish()
 
     function handleNavigate() {
         navigate("/userrequests")
@@ -58,8 +62,8 @@ export function Header({ onOpenMenu }) {
                         : <>
                             <ButtonRequests onClick={handleNavigate}>
                                 <img src={Receipt} alt="" />
-                                <span>Pedidos (0)</span>
-                                <div className="user-login">0</div>
+                                <span>Pedidos ({itemsQuantity})</span>
+                                <div className="user-login">{itemsQuantity}</div>
                             </ButtonRequests>
                         </>
                 }

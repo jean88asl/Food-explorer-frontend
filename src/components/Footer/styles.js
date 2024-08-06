@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { appear } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints";
 
 export const ContainerFooter = styled.div`
@@ -6,7 +7,7 @@ export const ContainerFooter = styled.div`
     width: 100%;
     bottom: 0;
 
-    background: ${({theme}) => theme['DARK-600']};
+    background: ${({ theme }) => theme['DARK-600']};
 `
 
 export const FooterContent = styled.footer`
@@ -17,6 +18,10 @@ export const FooterContent = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    animation: ${appear} 0.5ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 10%;
     
     div {
         display: flex;
@@ -30,12 +35,12 @@ export const FooterContent = styled.footer`
 
         h2 {
             font-size: 1.5rem;
-            color: ${({theme}) => theme['LIGHT-700']}
+            color: ${({ theme }) => theme['LIGHT-700']}
         }
     }
 
     p {
-        color: ${({theme}) => theme['LIGHT-200']};
+        color: ${({ theme }) => theme['LIGHT-200']};
         font-size: 0.875rem;
     }
 

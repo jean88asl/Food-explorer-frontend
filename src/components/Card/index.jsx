@@ -87,6 +87,9 @@ export function Card({ url, dishName, description, price, id }) {
                 ![USER_ROLE.ADMIN].includes(user.role) &&
                 <ItemCounter
                     dishId={id}
+                    nameDish={dishName}
+                    url={urlImage}
+                    homePrice={price}
                 />
             }
         </Container>
