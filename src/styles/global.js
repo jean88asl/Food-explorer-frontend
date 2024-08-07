@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     :focus {
-        outline: none;
+        outline: transparent;
     }
 
     body {

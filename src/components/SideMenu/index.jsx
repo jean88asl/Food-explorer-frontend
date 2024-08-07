@@ -29,8 +29,8 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
             </Header>
 
             <MenuContent>
-               <InputSearch className="side-menu-on"/>
-
+               <InputSearch data-sidebar={true} className="side-menu-on"/>
+               
                <LogOut onClick={handleSignOut}>
                     Sair
                </LogOut>

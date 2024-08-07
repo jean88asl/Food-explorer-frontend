@@ -6,23 +6,23 @@ export const SwiperContainer = styled.div`
 
     &::before,
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
-        bottom: 0;
-        width: 45px; 
-        pointer-events: none;
-        z-index: 1;
+        width: 55px; 
+        height: 100%;
+        z-index: 2;
+        transition: opacity 0.4s ease;
     }
-
+    
     &::before {
         left: 0;
-        box-shadow: inset 20px 20px 350px 20px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(90deg, #000A0F 15%, rgba(0, 10, 15, 0.1) 95%);
     }
 
     &::after {
         right: 0;
-        box-shadow: inset 20px 20px 350px 20px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(90deg, rgba(0, 10, 15, 0.1) 0%,  #000A0F 95%);
     }
 
     .swiper {

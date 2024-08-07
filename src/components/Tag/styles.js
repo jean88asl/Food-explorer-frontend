@@ -5,4 +5,6 @@ export const TagContainer = styled.div`
     background: ${({theme}) => theme['DARK-1000']};
     color: ${({theme}) => theme['LIGHT-100']};
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 `

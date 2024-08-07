@@ -10,6 +10,7 @@ export const appear = keyframes`
         opacity: 1;
     }     
 `
+
 export const heartBeat = keyframes`
     from {    
         transform: scale(1);
@@ -33,6 +34,7 @@ export const heartBeat = keyframes`
         animation-timing-function: ease-out;
     }
 `
+
 export const textAnimation = keyframes`
   0% {
     transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
@@ -47,5 +49,38 @@ export const textAnimation = keyframes`
     filter: blur(0);
     opacity: 1;
   }    
+`
+
+export const openMenu = keyframes`
+    0% {
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }    
+`
+
+export const openMenuBtn = keyframes`
+    0% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+`
+
+export const closeMenu = keyframes`
+    0% {
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 `
 

@@ -25,6 +25,12 @@ export function InputSearch() {
         }
     }
 
+    function handleFocusOff() {
+        setShowResults(false)
+        setResults([])
+        setSearch("")
+    }
+
     useEffect(() => {
         if (search.length === 0) {
             setShowResults(false)
@@ -37,8 +43,10 @@ export function InputSearch() {
             <input
                 placeholder="Busque por pratos ou ingredientes"
                 onChange={e => setSearch(e.target.value)}
+                value={search}
                 onKeyDown={handleKeyDown}
                 onInput={handleSearch}
+                onBlur={handleFocusOff}
             />
 
             <button onClick={handleSearch}>

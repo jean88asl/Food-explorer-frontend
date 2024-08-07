@@ -1,18 +1,25 @@
 import styled from "styled-components";
+import { openMenu, closeMenu } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints";
 
 export const Container = styled.aside`
     height: 100vh;
     display: none;
     flex-direction: column;
-
+    
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         width: 50%;
         position: absolute;
         z-index: 2;
         display: none;
-
+        
         &[data-menu-is-open="true"] {
+            animation: ${openMenu} 650ms cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+            display: block;
+        }
+
+        &[data-menu-is-open="false"] {
+            animation: ${closeMenu} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
             display: block;
         }
     }  
@@ -22,8 +29,14 @@ export const Container = styled.aside`
         position: absolute;
         z-index: 2;
         display: none;
-
+        
         &[data-menu-is-open="true"] {
+            animation: ${openMenu} 850ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            display: block;
+        }
+
+        &[data-menu-is-open="false"] {
+            animation: ${closeMenu} 850ms cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
             display: block;
         }
     }  
@@ -31,7 +44,7 @@ export const Container = styled.aside`
 
 export const Header = styled.header`
     width: 100%;
-    height: 78px;
+    height: 7.125rem;;
     background-color: ${({ theme }) => theme['DARK-700']};
     padding: 0;
     
@@ -40,8 +53,7 @@ export const Header = styled.header`
         background: transparent;
         display: flex;
         align-items: end;
-        margin: 2rem 1.5rem 0;
-        padding: 0;
+        padding: 26px 18px;
         border: 0;
         
         font-size: 1.3125rem;
@@ -54,8 +66,8 @@ export const Header = styled.header`
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         button {
-            margin: 3.5rem 1.5rem 0;
-        }
+            padding: 44px 26px; 
+        }    
     }
 `
 
@@ -70,8 +82,8 @@ export const LogOut = styled.button`
    padding: 10px;
    background: transparent;
    border: 0;
-   border-bottom: 1px solid ${({theme}) => theme['DARK-1000']};
-   color: ${({theme}) => theme['LIGHT-300']};
+   border-bottom: 1px solid ${({ theme }) => theme['DARK-1000']};
+   color: ${({ theme }) => theme['LIGHT-300']};
    width: 100%;
    margin-top: 2.5rem;
    text-align: left;

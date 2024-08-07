@@ -7,8 +7,9 @@ export const Container = styled.div`
     background: ${({ theme }) => theme['DARK-900']};
     border-radius: 8px;
 
-    :focus {
-        border: green;
+    &:focus-within {
+        outline: transparent;
+        box-shadow: 0 0 0 2px ${({theme}) => theme['MINT']};
     }
 
     input{
@@ -19,7 +20,7 @@ export const Container = styled.div`
         color: ${({ theme }) => theme['LIGHT-400']};
         background: ${({ theme }) => theme['DARK-900']};
 
-        &:placeholder {
+        &::placeholder {
              color: ${({ theme }) => theme['LIGHT-500']}
         }
     }

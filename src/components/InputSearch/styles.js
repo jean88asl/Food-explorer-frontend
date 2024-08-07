@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints";
 
 export const Container = styled.div`
     width: auto;
@@ -47,7 +46,7 @@ export const Container = styled.div`
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-height: 200px;
         overflow-y: auto;
-        z-index: 2;
+        z-index: 7;
 
         a {
             display: flex;
@@ -62,9 +61,5 @@ export const Container = styled.div`
         a:hover {
             background-color: #FFFFFF20; 
         }
-    }
-
-    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        display: none;
     }
 `

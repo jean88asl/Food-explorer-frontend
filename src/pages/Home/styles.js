@@ -34,6 +34,7 @@ export const Banner = styled.div`
         background: ${({ theme }) => theme['GRADIENT-200']};
         border-radius: 8px;
         animation: ${appear} 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        z-index: -2;
     }   
 
     img {
@@ -42,7 +43,7 @@ export const Banner = styled.div`
         position: relative;
         top: -3.9rem; 
         left: -4.2rem;
-        z-index: 1;
+        z-index: -1;
         animation: ${appear} 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }
 

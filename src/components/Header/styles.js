@@ -23,7 +23,7 @@ export const HeaderContainer = styled.header`
     display: grid;
     grid-template-columns: max-content auto max-content max-content;
     align-items: center;
-    animation: ${appear} 800ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: ${appear} 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
     gap: 32px;
 
@@ -42,6 +42,10 @@ export const HeaderContainer = styled.header`
         align-items: center;
         gap: 0;
 
+        span {
+            display: none;
+        }
+
         .admin-login {
             display: none;
         }
@@ -50,7 +54,7 @@ export const HeaderContainer = styled.header`
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         max-width: 372px;
         padding: 3.5rem 0rem 1.5rem;
-    }
+    }     
 `
 
 export const ButtonRequests = styled.button`
@@ -167,11 +171,10 @@ export const BtnMenu = styled.button`
 
     svg {
         font-size: 10px;
-        
+        transform: scale(1.4);
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-        display: block;
+        display: block;        
     }
 `
-

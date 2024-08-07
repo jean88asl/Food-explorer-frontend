@@ -14,10 +14,12 @@ import { useDish } from "../../contexts/DishContext"
 
 import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu } from "./styles"
 import { InputSearch } from "../InputSearch";
+import { useState } from "react";
 
 export function Header({ onOpenMenu }) {
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
+    const [isClicked, setIsClicked] = useState(false);
 
     const { itemsQuantity } = useDish()
 
@@ -34,11 +36,15 @@ export function Header({ onOpenMenu }) {
         signOut()
     }
 
+    function handleClick () {
+        setIsClicked(!isClicked);
+    }
+
     return (
         <Container>
             <HeaderContainer>
                 <BtnMenu onClick={onOpenMenu}>
-                    <BsList />
+                    <BsList isClicked={true} onClick={handleClick }/>
                 </BtnMenu>
 
                 <LogoContainer>
@@ -52,7 +58,9 @@ export function Header({ onOpenMenu }) {
                     </div>
                 </LogoContainer>
 
-                <InputSearch />
+                <span>
+                    <InputSearch />
+                </span>        
 
                 {
                     [USER_ROLE.ADMIN].includes(user.role) ?
