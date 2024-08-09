@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { appear } from "../../styles/animations"
+import { appearContentHeader } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
@@ -21,9 +21,9 @@ export const HeaderContainer = styled.header`
     padding: 0 1.25rem;
         
     display: grid;
-    grid-template-columns: max-content auto max-content max-content;
+    grid-template-columns: max-content auto max-content max-content max-content;
     align-items: center;
-    animation: ${appear} 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: ${appearContentHeader} 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940) 400ms both;
 
     gap: 32px;
 
@@ -55,6 +55,25 @@ export const HeaderContainer = styled.header`
         max-width: 372px;
         padding: 3.5rem 0rem 1.5rem;
     }     
+`
+
+export const ContainerFavoriteis = styled.section`
+    button {
+        background: transparent;
+        border: 0;
+        color: ${({ theme }) => theme['DARK-1000']};
+        cursor: pointer;
+        margin: 0;
+
+        &:hover {
+            transition: 450ms background ease-in;
+            color: #e5fa0a;
+        }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: none;
+    }
 `
 
 export const ButtonRequests = styled.button`

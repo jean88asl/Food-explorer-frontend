@@ -27,8 +27,6 @@ export function InputSearch() {
 
     function handleFocusOff() {
         setShowResults(false)
-        setResults([])
-        setSearch("")
     }
 
     useEffect(() => {
@@ -46,7 +44,6 @@ export function InputSearch() {
                 value={search}
                 onKeyDown={handleKeyDown}
                 onInput={handleSearch}
-                onBlur={handleFocusOff}
             />
 
             <button onClick={handleSearch}>
@@ -58,8 +55,8 @@ export function InputSearch() {
                 showResults && (
                     <div className="results">
                         {
-                            results.map((item, index) => (
-                                <Link to={`/dish/${item.id}`} key={index}>
+                            results.map((item) => (
+                                <Link to={`/dish/${item.id}`} key={item.id} onBlur={handleFocusOff}>
                                     <p >{item.dish_name}</p>
                                     <span>ver prato &#62;</span>
                                 </Link>

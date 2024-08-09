@@ -6,29 +6,29 @@ import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles"
 
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-import { BsList } from "react-icons/bs";
+import { BsList, BsFillStarFill } from "react-icons/bs";
 
 import { useNavigate } from "react-router-dom";
 
 import { useDish } from "../../contexts/DishContext"
 
-import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu } from "./styles"
+import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu, ContainerFavoriteis } from "./styles"
 import { InputSearch } from "../InputSearch";
-import { useState } from "react";
 
 export function Header({ onOpenMenu }) {
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
-    const [isClicked, setIsClicked] = useState(false);
 
     const { itemsQuantity } = useDish()
 
-    function handleNavigate() {
-        navigate("/userrequests")
-    }
-
-    function handleNavigateAdmin() {
-        navigate("/add")
+    function handleNavigate(option) {
+        if (option === 1) {
+            navigate("/userrequests")
+        } if (option === 2) {
+            navigate("/add")
+        } if (option === 3) {
+            navigate("/favorites")
+        }
     }
 
     function handleSignOut() {
@@ -36,15 +36,11 @@ export function Header({ onOpenMenu }) {
         signOut()
     }
 
-    function handleClick () {
-        setIsClicked(!isClicked);
-    }
-
     return (
         <Container>
             <HeaderContainer>
                 <BtnMenu onClick={onOpenMenu}>
-                    <BsList isClicked={true} onClick={handleClick }/>
+                    <BsList />
                 </BtnMenu>
 
                 <LogoContainer>
@@ -60,15 +56,23 @@ export function Header({ onOpenMenu }) {
 
                 <span>
                     <InputSearch />
-                </span>        
+                </span>
+
+                { ![USER_ROLE.ADMIN].includes(user.role) &&        
+                    <ContainerFavoriteis>
+                        <button type="button" onClick={() => handleNavigate(3)} title="favoritos">
+                            <BsFillStarFill />
+                        </button>
+                    </ContainerFavoriteis>
+                }
 
                 {
                     [USER_ROLE.ADMIN].includes(user.role) ?
-                        <ButtonRequests onClick={handleNavigateAdmin} className="admin-login">
+                        <ButtonRequests onClick={() => handleNavigate(2)} className="admin-login">
                             Novo Prato
                         </ButtonRequests>
                         : <>
-                            <ButtonRequests onClick={handleNavigate}>
+                            <ButtonRequests onClick={() => handleNavigate(1)}>
                                 <img src={Receipt} alt="" />
                                 <span>Pedidos ({itemsQuantity})</span>
                                 <div className="user-login">{itemsQuantity}</div>
@@ -76,7 +80,7 @@ export function Header({ onOpenMenu }) {
                         </>
                 }
 
-                <ButtonSignOut onClick={handleSignOut}>
+                <ButtonSignOut onClick={handleSignOut} title="sair">
                     <FaArrowRightFromBracket />
                 </ButtonSignOut>
             </HeaderContainer>
