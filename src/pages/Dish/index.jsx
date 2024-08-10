@@ -45,7 +45,7 @@ export function Dish() {
         <Container>
             <main>
                 <DishLink>
-                    <Link to={'/'}>
+                    <Link to={-1}>
                         <IoIosArrowBack />
                         voltar
                     </Link>

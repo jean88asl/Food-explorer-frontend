@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Container, Card } from "./styles"
 import { api } from "../../service/api"
+import { Link } from "react-router-dom"
 
 export function Favorites() {
     const [data, setData] = useState([])
@@ -9,7 +10,7 @@ export function Favorites() {
         const verification = confirm("Tem certeza que deseja apagar esse prato dos favoritos?")
 
         if (verification) {
-            const newData = data.filter(dish => dish.id !== id)
+            const newData = data.filter(dish => dish.id_favorites !== id)
 
             try {
                 await api.delete(`likes/${id}`)
@@ -39,12 +40,12 @@ export function Favorites() {
                     data &&
                     data.map(item => {
                         return (
-                            <Card key={item.id}>
+                            <Card key={item.id_favorites}>
                                 <img src={`${api.defaults.baseURL}/files/${item.image_dish}`} alt="" />
 
                                 <div>
-                                    <h2>{item.name}</h2>
-                                    <button onClick={() => handleRemoveFavorite(item.id)}>
+                                    <Link to={`/dish/${item.dish_id}`}> &#62; {item.name}</Link>
+                                    <button onClick={() => handleRemoveFavorite(item.id_favorites)}>
                                         Remover dos Favoritos
                                     </button>
                                 </div>

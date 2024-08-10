@@ -23,7 +23,7 @@ export const HeaderContainer = styled.header`
     display: grid;
     grid-template-columns: max-content auto max-content max-content max-content;
     align-items: center;
-    animation: ${appearContentHeader} 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940) 400ms both;
+    animation: ${appearContentHeader} 850ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
     gap: 32px;
 
@@ -64,9 +64,9 @@ export const ContainerFavoriteis = styled.section`
         color: ${({ theme }) => theme['DARK-1000']};
         cursor: pointer;
         margin: 0;
+        transition: color 250ms ease-in;
 
         &:hover {
-            transition: 450ms background ease-in;
             color: #e5fa0a;
         }
     }

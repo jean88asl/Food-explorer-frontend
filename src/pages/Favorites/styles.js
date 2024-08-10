@@ -1,5 +1,7 @@
-import styled from "styled-components";
-import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints";
+import styled from "styled-components"
+import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
+
+import { appear } from "../../styles/animations"
 
 export const Container = styled.div`
     width: 100%;
@@ -44,6 +46,7 @@ export const Card = styled.article`
     display: flex;
     align-items: center;
     gap: 10px;
+    animation: ${appear} 1200ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
     img {
         height: 4.5rem;
@@ -52,18 +55,41 @@ export const Card = styled.article`
         border-radius: 50%;
     }
 
-    h2 {
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    a {
         font-family: 'Poppins';
         font-weight: normal;
-        font-size: 1.25rem;
+        font-size: 1rem;
         line-height: 1.5;
+        color: ${({theme}) => theme['LIGHT-300']};
+        cursor: pointer;
     }
-
+    
     button {
         background: transparent;
         border: 0;
-        color: ${({theme}) => theme['TOMATO-400']};
+        color: ${({ theme }) => theme['TOMATO-400']};
         font-size: 0.75rem;
         cursor: pointer;
+        text-align: left;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        a {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        a {
+            font-size: 1.25rem;
+            line-height: 2;
+            margin-bottom: 0px;
+        }
     }
 `

@@ -10,6 +10,7 @@ export const appear = keyframes`
         opacity: 1;
     }     
 `
+
 export const appearContentHeader = keyframes`
     0% {
         transform: translateY(-1000px);
