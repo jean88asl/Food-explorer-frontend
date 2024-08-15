@@ -5,6 +5,7 @@ import { Dish } from '../pages/Dish'
 import { UserRequests } from "../pages/UserRequests"
 import { DefaultContainer } from "../layouts/DefaultLayout"
 import { Favorites } from "../pages/Favorites"
+import { RequestHistory } from "../pages/RequestHistory"
 
 import { DishProvider } from "../contexts/DishContext"
 import { NotFound } from "../pages/NotFound"
@@ -19,7 +20,8 @@ export function AuthRoutes() {
                     <Route path='/' element={<Home />} />
                     <Route path='/dish/:id' element={<Dish />} />
                     <Route path='/userrequests' element={<UserRequests />} />
-                    <Route path='/favorites' element={<Favorites />} /> 
+                    <Route path='/favorites' element={<Favorites />} />
+                    <Route path='/history' element={<RequestHistory />} />
                 </Route>
 
                 {user ? (

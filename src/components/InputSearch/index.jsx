@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { Container } from "./styles"
 
@@ -5,7 +6,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { api } from "../../service/api";
 
-export function InputSearch() {
+export function InputSearch({ onCloseMenu }) {
     const [search, setSearch] = useState("")
     const [results, setResults] = useState([])
     const [showResults, setShowResults] = useState(false)
@@ -25,8 +26,8 @@ export function InputSearch() {
         }
     }
 
-    function handleFocusOff() {
-        setShowResults(false)
+    function handleClickLinkSearch() {
+        onCloseMenu()
     }
 
     useEffect(() => {
@@ -56,7 +57,7 @@ export function InputSearch() {
                     <div className="results">
                         {
                             results.map((item) => (
-                                <Link to={`/dish/${item.id}`} key={item.id} onBlur={handleFocusOff}>
+                                <Link to={`/dish/${item.id}`} key={item.id} onClick={handleClickLinkSearch}>
                                     <p >{item.dish_name}</p>
                                     <span>ver prato &#62;</span>
                                 </Link>

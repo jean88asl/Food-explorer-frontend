@@ -9,4 +9,5 @@ export const Content = styled.div`
     max-width: 71rem;
     margin: 0 auto;
     padding: 0 1.25rem; 
+    min-height: calc(100vh - 208px);
 `

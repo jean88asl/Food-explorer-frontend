@@ -13,8 +13,6 @@ import uploadImg from "../../../assets/upload.svg"
 import { Container, ButtonsContainer, SectionForm, Wrapper, WrapperFile, IngredientsContainer, TextAreaContainer } from "../styles"
 import { api } from "../../../service/api"
 
-// import { useDish } from "../../../contexts/DishContext"
-
 export function EditDish() {
     const [dishName, setDishName] = useState("")
     const [dishPrice, setDishPrice] = useState("")
@@ -28,8 +26,6 @@ export function EditDish() {
 
     const params = useParams()
     const navigate = useNavigate()
-
-    // const { addIngredient } = useDish()
 
     function handleAddIngredient() {
         if (!newIngredient) {
