@@ -51,5 +51,36 @@ export const HistoryTable = styled.div`
         .different-size{
             max-width: 45rem;
         }
+
+        select{
+            height: 3rem;
+            width: 100%;
+            background: ${({ theme }) => theme['DARK-900']};
+            color: ${({ theme }) => theme['LIGHT-400']};
+            padding-left: 1rem;
+        }       
+    }
+`
+
+export const ContainerStatus = styled.span`
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    gap: 7px;
+
+    &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: ${({theme, $statusName}) => {
+            if($statusName === 'pendente'){
+                return theme['TOMATO-300']
+            } if($statusName === 'preparado') {
+                return theme['CARROT-100']
+            } if($statusName === 'entregue') {
+                return theme['MINT-100']
+            }
+        }}
     }
 `

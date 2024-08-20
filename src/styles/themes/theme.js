@@ -25,9 +25,9 @@ export const defaultTheme = {
     "TOMATO-300": "#AB222E",
     "TOMATO-400": "#AB4D55",
     
-    "CARROT": "#FBA94C",
+    "CARROT-100": "#FBA94C",
 
-    "MINT": "#04D361",
+    "MINT-100": "#04D361",
     "CAKE-100": "#065E7C",
     "CAKE-200": "#82F3FF",
 }

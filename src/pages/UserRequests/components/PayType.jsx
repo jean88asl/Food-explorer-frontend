@@ -1,6 +1,6 @@
-import { useState } from "react";
-
-import { Container, Header, Content, WrapperForm } from "./pay-type";
+import { useState } from "react"
+import { Container, Header, Content, WrapperForm } from "./pay-type"
+import InputMask from "react-input-mask"
 
 import { Button } from "../../../components/Button"
 
@@ -10,7 +10,9 @@ import qrCode from "../../../assets/qrpix.png"
 
 export function PayType() {
     const [type, setType] = useState(1)
-
+    const [cardNumber, setCardNumber] = useState(Number)
+    const [cardExpiration, setCardExpiration] = useState(Date)
+    const [cvc, setCvc] = useState(Number)
 
     function handlePixPay() {
         setType(1)
@@ -18,6 +20,21 @@ export function PayType() {
 
     function handleCreditPay() {
         setType(2)
+    }
+
+    function handleCheckout() {
+        if (!cardNumber || !cardExpiration || !cvc) {
+            return alert("Favor preencha todos os campos.")
+        }
+
+        const cardNumberFormate = cardNumber.replace(/( )+/g, '')
+        const cvcFormate = cvc.replace(/( )+/g, '')
+
+        if (Number(cardNumberFormate) === 7777777777777777 && Number(cvcFormate) === 777) {
+            return alert("Deu bom papai!")
+        } else[
+            alert("Dados inválidos")
+        ]
     }
 
     return (
@@ -43,24 +60,38 @@ export function PayType() {
                         <form>
                             <WrapperForm>
                                 <label htmlFor="card-number">Número do cartão</label>
-                                <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxLength="16"/>
+                                <InputMask
+                                    id="card-number"
+                                    mask="9999 9999 9999 9999"
+                                    maskPlaceholder="0000 0000 0000 0000"
+                                    onChange={e => setCardNumber(e.target.value)}
+                                />
                             </WrapperForm>
-            
+
                             <section>
                                 <WrapperForm>
                                     <label htmlFor="validation">Validade</label>
-                                    <input type="text" id="validation" placeholder="04/25"/>
+                                    <InputMask
+                                        id="validation"
+                                        maskPlaceholder="04/24"
+                                        mask="99/99"
+                                        onChange={e => setCardExpiration(e.target.value)} />
                                 </WrapperForm>
 
                                 <WrapperForm>
-                                    <label htmlFor="cvc">Número do cartão</label>
-                                    <input type="text" id="cvc" placeholder="000" maxLength="3"/>
+                                    <label htmlFor="cvc">CVC</label>
+                                    <InputMask 
+                                        id="cvc" 
+                                        maskPlaceholder="000"
+                                        mask="999" 
+                                        onChange={e => setCvc(e.target.value)} />
                                 </WrapperForm>
                             </section>
 
-                            <Button 
+                            <Button
                                 title="Finalizar pagamento"
                                 type="button"
+                                onClick={handleCheckout}
                             />
                         </form>
                     </div>

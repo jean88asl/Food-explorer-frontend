@@ -31,7 +31,7 @@ export function SignUp() {
         api.post("/users", { name, email, password })
             .then(() => {
                 alert("Usuário cadastrado com sucesso.")
-                return navigate("/signin")
+                return navigate("/")
             })
             .catch(error => {
                 if (error.response) {
