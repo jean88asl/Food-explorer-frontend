@@ -11,12 +11,12 @@ export function UserRequests() {
     const [dataDish, setDataDish] = useState([])
     const [totalOrders, setTotalOrders] = useState("")
 
-    const { priceFormatting, removeItem } = useDish()
+    const { priceFormatting, removeItemContext } = useDish()
 
     function handleRemoveItem(id) {
         const newItemList = dataDish.filter(item => item.id !== id);
         setDataDish(newItemList);
-        removeItem(id)
+        removeItemContext(id)
         localStorage.setItem("@foodexplorer:requests", JSON.stringify(newItemList));
 
         if (newItemList) {
@@ -76,7 +76,10 @@ export function UserRequests() {
 
                     <PayInfo>
                         <h2>Pagamento</h2>
-                        <PayType />
+                        <PayType 
+                            dataRequest={dataDish}
+                            total={totalPartialOrders}
+                        />
                     </PayInfo>
                 </ContainerContent>
             </main>

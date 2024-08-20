@@ -1,18 +1,26 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Container, Header, Content, WrapperForm } from "./pay-type"
 import InputMask from "react-input-mask"
 
 import { Button } from "../../../components/Button"
+import { useDish } from "../../../contexts/DishContext"
 
 import logoPix from "../../../assets/pix.svg"
 import logoCredit from "../../../assets/credit.svg"
 import qrCode from "../../../assets/qrpix.png"
+import { api } from "../../../service/api"
 
-export function PayType() {
+export function PayType({ dataRequest, total }) {
     const [type, setType] = useState(1)
     const [cardNumber, setCardNumber] = useState(Number)
     const [cardExpiration, setCardExpiration] = useState(Date)
     const [cvc, setCvc] = useState(Number)
+
+    const { removeItemContext } = useDish()
+
+    const navigate = useNavigate()
 
     function handlePixPay() {
         setType(1)
@@ -22,7 +30,7 @@ export function PayType() {
         setType(2)
     }
 
-    function handleCheckout() {
+    async function handleCheckout() {
         if (!cardNumber || !cardExpiration || !cvc) {
             return alert("Favor preencha todos os campos.")
         }
@@ -31,7 +39,36 @@ export function PayType() {
         const cvcFormate = cvc.replace(/( )+/g, '')
 
         if (Number(cardNumberFormate) === 7777777777777777 && Number(cvcFormate) === 777) {
-            return alert("Deu bom papai!")
+
+            if (!dataRequest) {
+                return alert("Não existem items adicionados a listagem")
+            }
+
+            const list = dataRequest.map(item => {
+                return {
+                    dish_id: Number(item.id),
+                    dish_name: item.nameDish,
+                    quantity: item.quantity,
+                }
+            })
+
+            const data = {
+                type: "credito",
+                total: total,
+                list_items: list
+            }
+
+            try {
+                await api.post('requests', data)
+            } catch (error) {
+                console.log(error)
+            }
+
+            removeItemContext()
+
+            alert("Deu bom papai!")
+
+            return navigate('/history')
         } else[
             alert("Dados inválidos")
         ]
@@ -80,10 +117,10 @@ export function PayType() {
 
                                 <WrapperForm>
                                     <label htmlFor="cvc">CVC</label>
-                                    <InputMask 
-                                        id="cvc" 
+                                    <InputMask
+                                        id="cvc"
                                         maskPlaceholder="000"
-                                        mask="999" 
+                                        mask="999"
                                         onChange={e => setCvc(e.target.value)} />
                                 </WrapperForm>
                             </section>

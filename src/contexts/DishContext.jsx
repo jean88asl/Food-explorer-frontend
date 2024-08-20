@@ -40,11 +40,16 @@ function DishProvider({ children }) {
     setItemsQuantity(updatedItems.length)
   }
 
-  function removeItem(itemId) {
-    const updatedItems = items.filter(item => item.id !== itemId);
-    setItems(updatedItems);
-    localStorage.setItem("@foodexplorer:requests", JSON.stringify(updatedItems));
-    setItemsQuantity(updatedItems.length);
+  function removeItemContext(itemId) {
+    if(itemId){
+      const updatedItems = items.filter(item => item.id !== itemId);
+      setItems(updatedItems);
+      localStorage.setItem("@foodexplorer:requests", JSON.stringify(updatedItems));
+      setItemsQuantity(updatedItems.length);
+    } else {
+      localStorage.removeItem("@foodexplorer:requests")
+      setItemsQuantity(0)
+    }
   }
 
   useEffect(() => {
@@ -58,7 +63,7 @@ function DishProvider({ children }) {
   }, []); 
 
   return (
-    <DishContext.Provider value={{ priceFormatting, orderInfo, items, itemsQuantity, removeItem }}>
+    <DishContext.Provider value={{ priceFormatting, orderInfo, items, itemsQuantity, removeItemContext }}>
       {children}
     </DishContext.Provider>
   );
