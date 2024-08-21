@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns"
 
 import { api } from "../../service/api";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 
 import { useAuth } from "../../hooks/auth"
 import { USER_ROLE } from "../../utils/roles"
 
-import { Container, HistoryTable, ContainerStatus } from "./styles";
+import { Container, HistoryTable, ContainerStatus, SizeContainerMobile, SelectContainer } from "./styles";
 
 export function RequestHistory() {
     const [historyData, setHistoryData] = useState([])
@@ -68,14 +70,17 @@ export function RequestHistory() {
                                             {
                                                 [USER_ROLE.ADMIN].includes(user.role) ?
                                                     (
-                                                        <select
-                                                            onChange={(e) => handleStatusChange(e.target.value, data.id)}
-                                                            value={data.status}
-                                                        >
-                                                            <option value="pendente">Pendente</option>
-                                                            <option value="preparando">Preparando</option>
-                                                            <option value="entregue">Entregue</option>
-                                                        </select>
+                                                        <SelectContainer>
+                                                            <select
+                                                                onChange={(e) => handleStatusChange(e.target.value, data.id)}
+                                                                value={data.status}
+                                                            >
+                                                                <option value="pendente">Pendente</option>
+                                                                <option value="preparando">Preparando</option>
+                                                                <option value="entregue">Entregue</option>
+                                                            </select>
+                                                            <MdKeyboardArrowDown size={24} />
+                                                        </SelectContainer>
                                                     ) : (
                                                         <ContainerStatus
                                                             $statusName={data.status}
@@ -104,6 +109,61 @@ export function RequestHistory() {
                         }
                     </tbody>
                 </table>
+
+                <SizeContainerMobile>
+                    <h2>Pedidos</h2>
+                    {
+                        historyData.map(data => {
+                            return (
+                                <div key={data.id}>
+                                    <header>
+                                        <span>{String(data.id).padStart(6, "0")}</span>
+                                        <span>
+                                            {[USER_ROLE.ADMIN].includes(user.role) ? (
+                                                <>
+
+                                                </>
+                                            ) : (
+                                                <ContainerStatus
+                                                    $statusName={data.status}
+                                                >
+                                                    {data.status}
+                                                </ContainerStatus>
+                                            )}
+                                        </span>
+                                        <span>{format(data.updated_at, "dd/MM 'às' HH'h'mm")}</span>
+                                    </header>
+                                    <main>
+                                        {
+                                            data.items.map(item => {
+                                                return (
+                                                    <span key={item.id}>
+                                                        {`${item.quantity}x ${item.dish_name} `}
+                                                    </span>
+                                                )
+                                            })
+                                        }
+
+                                        {
+                                            [USER_ROLE.ADMIN].includes(user.role) &&
+                                            <SelectContainer>
+                                                <select
+                                                    onChange={(e) => handleStatusChange(e.target.value, data.id)}
+                                                    value={data.status}
+                                                >
+                                                    <option value="pendente">Pendente</option>
+                                                    <option value="preparando">Preparando</option>
+                                                    <option value="entregue">Entregue</option>
+                                                </select>
+                                                <MdKeyboardArrowDown size={24} />
+                                            </SelectContainer>
+                                        }
+                                    </main>
+                                </div>
+                            )
+                        })
+                    }
+                </SizeContainerMobile>
             </HistoryTable>
         </Container>
     )

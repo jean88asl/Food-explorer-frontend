@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
     max-width: 100%;
@@ -10,4 +11,8 @@ export const Content = styled.div`
     margin: 0 auto;
     padding: 0 1.25rem; 
     min-height: calc(100vh - 208px);
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        min-height: calc(100vh - 163px);
+    }
 `

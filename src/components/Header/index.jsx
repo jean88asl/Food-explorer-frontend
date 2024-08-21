@@ -45,13 +45,14 @@ export function Header({ onOpenMenu }) {
 
                 <LogoContainer>
                     <img src={Logo} alt="" />
-                    <div>
-                        <h1>food explorer</h1>
-                        {
-                            [USER_ROLE.ADMIN].includes(user.role) &&
-                            <p>admin</p>
-                        }
-                    </div>
+                    
+                        <div>
+                            <h1>food explorer</h1>
+                            {
+                                [USER_ROLE.ADMIN].includes(user.role) &&
+                                <p>admin</p>
+                            }
+                        </div>                    
                 </LogoContainer>
 
                 <span>
