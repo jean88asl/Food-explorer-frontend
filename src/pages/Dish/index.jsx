@@ -68,7 +68,8 @@ export function Dish() {
                                         return (
                                             <Tag
                                                 key={ingredient.id}
-                                                title={ingredient.name} />
+                                                title={ingredient.name} 
+                                            />
                                         )
                                     })
                                 }

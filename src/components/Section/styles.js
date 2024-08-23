@@ -19,11 +19,7 @@ export const Container = styled.section`
     }
     
     div {
-        display: flex;
-        
-        --swiper-navigation-size: 2.5rem;
-        --swiper-navigation-top-offset: 50%;
-        --swiper-navigation-color: white;
+        display: flex;        
     }
 
     @media (max-width: 1024px) {

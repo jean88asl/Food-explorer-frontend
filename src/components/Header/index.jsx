@@ -6,13 +6,13 @@ import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles"
 
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-import { BsList, BsFillStarFill } from "react-icons/bs";
+import { BsList, BsFillStarFill, BsClockHistory } from "react-icons/bs";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useDish } from "../../contexts/DishContext"
 
-import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu, ContainerFavoriteis } from "./styles"
+import { Container, LogoContainer, HeaderContainer, ButtonRequests, ButtonSignOut, BtnMenu, ContainerFavoriteis, HistoryLink } from "./styles"
 import { InputSearch } from "../InputSearch";
 
 export function Header({ onOpenMenu }) {
@@ -47,7 +47,11 @@ export function Header({ onOpenMenu }) {
                     <img src={Logo} alt="" />
                     
                         <div>
-                            <h1>food explorer</h1>
+                            <h1>
+                                <Link to={"/"}>
+                                    food explorer
+                                </Link>
+                            </h1>
                             {
                                 [USER_ROLE.ADMIN].includes(user.role) &&
                                 <p>admin</p>
@@ -59,12 +63,21 @@ export function Header({ onOpenMenu }) {
                     <InputSearch />
                 </span>
 
-                { ![USER_ROLE.ADMIN].includes(user.role) &&        
+                { 
+                    ![USER_ROLE.ADMIN].includes(user.role) ? (        
                     <ContainerFavoriteis>
-                        <button type="button" onClick={() => handleNavigate(3)} title="favoritos">
-                            <BsFillStarFill />
-                        </button>
+                            <button type="button" onClick={() => handleNavigate(3)} title="favoritos">
+                                <BsFillStarFill />
+                            </button>
                     </ContainerFavoriteis>
+                    ) : (
+                        <HistoryLink to={"/history"}>
+                            <BsClockHistory 
+                                size={32}
+                                title="Histórico de pedidos"
+                            />
+                        </HistoryLink>
+                    )
                 }
 
                 {

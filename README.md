@@ -1,6 +1,6 @@
 # Food Explorer
 
-Food Explorer é uma aplicação web que permite aos usuários explorar, selecionar e solicitar pratos de restaurante fictício. Plataforma de pedido de alimentos online semelhante ao a algumas existentes. Fornece uma interface amigável tanto para os usuários quanto para os administradores de sistema. pratos. 
+Food Explorer é uma aplicação web que permite aos usuários explorar, selecionar e solicitar pratos de restaurante. Consiste em uma plataforma de pedido de alimentos online. Fornece uma interface amigável tanto para os usuários quanto para os administradores de sistema.
 
 ## Índice
 
@@ -9,17 +9,18 @@ Food Explorer é uma aplicação web que permite aos usuários explorar, selecio
 - [Configuração do Ambiente](#configuração-do-ambiente)
 - [Scripts Disponíveis](#scripts-disponíveis)
 - [Contribuição](#contribuição)
+- [Imagens do projeto](#Imagens-do-projeto)
 - [Licença](#licença)
 
 ## Visão Geral
 
 - Exploração de Pratos: Os usuários podem navegar por uma vasta seleção de pratos organizados por categorias, incluindo detalhes como ingredientes, preços e avaliações.
 
-- Busca Avançada: Através da barra de pesquisa inteligente, os usuários podem encontrar pratos específicos ou explorar opções baseadas em ingredientes específicos.
+- Busca Avançada: Através da barra de pesquisa inteligente, os usuários podem encontrar pratos específicos ou explorar opções baseadas em ingredientes de sua preferência.
 
 - Gestão de Pedidos: Os usuários podem acompanhar o status do seu pedido em tempo real, desde o momento da solicitação até a entrega.
 
-- Administração: Os administradores têm acesso a um painel onde podem gerenciar o catálogo de pratos, visualizar e processar pedidos e monitorar o desempenho do restaurante.
+- Administração: Os administradores têm acesso a um painel onde podem gerenciar o catálogo de pratos, visualizar e processar os pedidos.
 
 ## Tecnologias Utilizadas
 
@@ -55,6 +56,56 @@ Food Explorer é uma aplicação web que permite aos usuários explorar, selecio
 ## Contribuição
 
 Se você deseja contribuir para o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request. Todas as contribuições são bem-vindas!
+
+## Imagens do projeto
+
+ **Home:**
+<p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/home1.png" width="100%">
+</p>
+
+<p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/home2.png" width="100%">
+</p>
+
+ **Detalhes do prato:**
+
+ <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/dish.png" width="100%">
+</p>
+
+ **Área de pedidos/histórico:**
+  <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/requests.png" width="100%">
+</p>
+
+ <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/history-user.png" width="100%">
+</p>
+
+ **Área administrativa:**
+ <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/adm1.png" width="100%">
+</p>
+
+ <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/adm4.png" width="100%">
+</p>
+
+ **Mobile:**
+
+ <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/mobile1.png" width="50%">
+</p>
+
+
+ <p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/adm2.png" width="50%">
+</p>
+
+<p align="center">
+  <img alt="projeto Food Explorer" src="./src/.github/adm3.png" width="50%">
+</p>
 
 ## Licença
 

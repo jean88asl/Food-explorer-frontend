@@ -23,9 +23,7 @@ export const ContainerContent = styled.div`
         margin-bottom: 2rem;
     }
 
-    @media (max-width: 1024px) {
-        gap: 0;
-    }
+   
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         display: block;
@@ -34,12 +32,20 @@ export const ContainerContent = styled.div`
 `
 
 export const OderInformation = styled.div`
-    height: auto;   
-
+    height: auto; 
+    
     footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 1rem 0;
         font-size: 1.25rem;
         font-family: 'Poppins';
+
+        a {
+            color: ${({theme}) => theme['LIGHT-100']};
+            display: flex;
+        }
     }
 `
 

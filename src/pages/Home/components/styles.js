@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from "../../../styles/layoutBreakpoints"
 
 export const SwiperContainer = styled.div`
     position: relative;
     width: 100%;
+
+    --swiper-navigation-size: 2.5rem;
+    --swiper-navigation-top-offset: 50%;
+    --swiper-navigation-color: white;
 
     &::before,
     &::after {
@@ -11,7 +16,7 @@ export const SwiperContainer = styled.div`
         top: 0;
         width: 55px; 
         height: 100%;
-        z-index: 2;
+        z-index: 2; /* Z-index dos gradientes */
         transition: opacity 0.4s ease;
     }
     
@@ -33,5 +38,19 @@ export const SwiperContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    /* Ajustando o z-index dos botões de navegação */
+    .swiper-button-next,
+    .swiper-button-prev {
+        z-index: 3; /* Maior que o z-index dos pseudo-elementos */
+        padding: 0 2.8rem;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none;
+        }        
     }
 `;

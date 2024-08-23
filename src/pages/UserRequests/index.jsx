@@ -6,6 +6,7 @@ import { PayType } from "./components/PayType"
 import { useEffect, useState } from "react"
 
 import { useDish } from "../../contexts/DishContext"
+import { Link } from "react-router-dom"
 
 export function UserRequests() {
     const [dataDish, setDataDish] = useState([])
@@ -65,18 +66,19 @@ export function UserRequests() {
                             })
                         }
 
-                        <footer>
-                          {
-                            <>                            
+                        {
+                            <footer>
                                 Total: {totalOrders}
-                            </>
-                          }  
-                        </footer>
+                                <Link to="/history">
+                                    Histórico
+                                </Link>
+                            </footer>
+                        }
                     </OderInformation>
 
                     <PayInfo>
                         <h2>Pagamento</h2>
-                        <PayType 
+                        <PayType
                             dataRequest={dataDish}
                             total={totalPartialOrders}
                         />

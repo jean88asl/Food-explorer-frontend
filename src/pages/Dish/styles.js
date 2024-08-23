@@ -6,7 +6,7 @@ export const Container = styled.div`
     width: 100%;
 
     main {
-        height:  calc(100vh - 15rem);
+        min-height:  calc(100vh - 15rem);
         margin: 0 auto;
         max-width: 100%;
     }
@@ -40,7 +40,7 @@ export const DishLink = styled.nav`
 
 export const DishDetails = styled.div`
     display: flex;
-    /* width: 100%; */
+    width: 100%; 
     gap: 2.875rem;
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
@@ -97,6 +97,14 @@ export const TagContainer = styled.div`
     display: flex;
     gap: 8px;
     margin: 1.5rem 0 3rem;
-    flex-wrap: nowrap;
     animation: ${textAnimation} 1600ms cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        justify-content: center;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        max-width: 350px;
+        flex-wrap: wrap;
+    }
 `

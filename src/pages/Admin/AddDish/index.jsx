@@ -45,7 +45,9 @@ export function AddDish() {
         const ingredientsExist = ingredientsDish.length === 0
 
         if (!dishName || !dishPrice || !dishDescription || !dishCategory || ingredientsExist) {
-            return alert("todos os campos são obrigatórios")
+            alert("todos os campos são obrigatórios")
+            setRecording(false)
+            return
         }
 
         const dishPriceDefault = Math.round(Number(dishPrice) * 100)

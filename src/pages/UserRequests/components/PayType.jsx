@@ -39,11 +39,11 @@ export function PayType({ dataRequest, total }) {
         const cvcFormate = cvc.replace(/( )+/g, '')
 
         if (Number(cardNumberFormate) === 7777777777777777 && Number(cvcFormate) === 777) {
-
-            if (!dataRequest) {
+            
+            if (dataRequest.length === 0) {
                 return alert("Não existem items adicionados a listagem")
             }
-
+            
             const list = dataRequest.map(item => {
                 return {
                     dish_id: Number(item.id),
@@ -66,11 +66,11 @@ export function PayType({ dataRequest, total }) {
 
             removeItemContext()
 
-            alert("Deu bom papai!")
+            alert("Pedido efetuado com sucesso!")
 
             return navigate('/history')
         } else[
-            alert("Dados inválidos")
+            alert("Dados de pagamento inválidos.")
         ]
     }
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { appearContentHeader } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     max-width: 100%;
@@ -70,6 +71,14 @@ export const ContainerFavoriteis = styled.section`
             color: #e5fa0a;
         }
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+        display: none;
+    }
+`
+
+export const HistoryLink = styled(Link)`
+    color: ${({theme}) => theme['LIGHT-100']};
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         display: none;
@@ -151,8 +160,10 @@ export const LogoContainer = styled.div`
             margin: 0;
             font-size: 1.5rem;
             font-weight: bold;
-
-            color: ${({ theme }) => theme['LIGHT-100']};
+            
+            a {
+                color: ${({ theme }) => theme['LIGHT-100']};
+            }
         } 
 
         p {

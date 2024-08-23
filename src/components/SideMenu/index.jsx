@@ -3,6 +3,7 @@ import { InputSearch } from "../../components/InputSearch"
 
 import { RiCloseFill } from "react-icons/ri";
 import { PiSignOutFill, PiStarThin, PiBowlFood } from "react-icons/pi";
+import { BsClockHistory } from "react-icons/bs";
 
 import { Container, Header, MenuContent, BtnSideBar } from "./styles"
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,9 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
             navigate("/add")
             onCloseMenu()
         } if (option === 3) {
+            navigate("/history")
+            onCloseMenu()
+        }if (option === 4) {
             navigate("/")
             signOut()
         } 
@@ -48,11 +52,17 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
                             <PiStarThin /> Meus Favoritos
                         </BtnSideBar>
                         :
+                        <>
                         <BtnSideBar onClick={() => handleNavigation(2)}>
                             <PiBowlFood /> Novo Prato
                         </BtnSideBar>
+                        
+                     </>
                     }
                     <BtnSideBar onClick={() => handleNavigation(3)}>
+                        <BsClockHistory /> Histórico de pedidos
+                    </BtnSideBar>
+                    <BtnSideBar onClick={() => handleNavigation(4)}>
                         <PiSignOutFill /> Sair
                     </BtnSideBar>
                 </div>

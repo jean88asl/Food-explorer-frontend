@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import { Card } from "../../../components/Card";
 import { SwiperContainer } from './styles';
@@ -18,7 +19,7 @@ export function SwiperComponent({ items }) {
                 loop={true}
                 rewind={true}
                 navigation={true}
-                loopPreventsSliding={true}
+                loopPreventsSliding={false}
                 breakpoints={{
                     425: {
                       slidesPerView: 2,
@@ -28,7 +29,6 @@ export function SwiperComponent({ items }) {
                     768: {
                       slidesPerView: 3,
                       spaceBetween: 24,
-                      navigation: false,
                     },
                     1024: {
                       slidesPerView: 3.5,
