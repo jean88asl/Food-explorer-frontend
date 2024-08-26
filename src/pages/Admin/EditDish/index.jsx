@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { IngredientsDish } from "../../../components/IngredientsDish"
+import { Spinner } from "../../../components/Spinner"
 
 import { BackLink } from "../components/BackLink"
 import { FormDish } from "../components/FormDish"
@@ -23,6 +24,8 @@ export function EditDish() {
     const [ingredientsDish, setIngredientsDish] = useState([])
 
     const [imageDishFile, setImageDishFile] = useState(null)
+
+    const [loading, setLoading] = useState(false)
 
     const params = useParams()
     const navigate = useNavigate()
@@ -60,13 +63,13 @@ export function EditDish() {
         setImageDishFile(renamedFile)
     }
 
-    async function handleUpdate() {     
+    async function handleUpdate() {
         const ingredientsExist = ingredientsDish.length === 0
 
         if (!dishName || !dishPrice || !dishDescription || !dishCategory || ingredientsExist) {
             return alert("todos os campos são obrigatórios")
         }
-        
+
         const dishPriceDefault = Math.round(Number(dishPrice) * 100)
 
         const dishEdited = {
@@ -78,6 +81,7 @@ export function EditDish() {
         }
 
         try {
+            setLoading(true)
             await api.put(`/dish/${params.id}`, dishEdited)
 
             if (imageDishFile) {
@@ -85,8 +89,6 @@ export function EditDish() {
                 fileImageForm.append("image", imageDishFile)
 
                 await api.patch(`/dish/image/${params.id}`, fileImageForm)
-
-                alert("Imagem alterada com sucesso.")
             }
 
             return alert("Prato editado com sucesso.")
@@ -96,6 +98,8 @@ export function EditDish() {
             } else {
                 return console.log("Não foi possível realizar a alteração.")
             }
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -107,6 +111,7 @@ export function EditDish() {
         }
 
         try {
+            setLoading(true)
             await api.delete(`/dish/${params.id}`)
             alert("Prato excluído com sucesso")
             return navigate("/")
@@ -116,6 +121,8 @@ export function EditDish() {
             } else {
                 return console.log("Não foi possível realizar a alteração.")
             }
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -138,6 +145,9 @@ export function EditDish() {
 
     return (
         <Container>
+            {loading ? (
+                <Spinner />
+            ): (
             <main>
                 <BackLink
                     title="voltar"
@@ -246,6 +256,8 @@ export function EditDish() {
                     </ButtonsContainer>
                 </FormDish>
             </main>
+            )
+            }
         </Container>
     )
 }

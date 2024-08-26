@@ -10,7 +10,6 @@ function AuthProvider({ children }) {
 
     async function signIn({ email, password }) {
         try {
-            console.log("cheguei até o contexto")
             const response = await api.post("/sessions", { email, password })
             const { user, token } = response.data
 

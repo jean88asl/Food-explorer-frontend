@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { Tag } from "../../components/Tag"
 import { ItemCounter } from "../../components/ItemCounter"
 import { Button } from "../../components/Button"
+import { Spinner } from "../../components/Spinner"
 
 import { useAuth } from "../../hooks/auth"
 import { USER_ROLE } from "../../utils/roles"
@@ -21,6 +23,7 @@ export function Dish() {
 
     const [dataDish, setDataDish] = useState({})
     const [ingredients, setIngredients] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const urlImage = dataDish.image_dish === null ? mealPlaceholder : `${api.defaults.baseURL}/files/${dataDish.image_dish}`
 
@@ -33,9 +36,16 @@ export function Dish() {
 
     useEffect(() => {
         async function fetchDataDish() {
-            const response = await api.get(`/dish/${params.id}`)
-            setDataDish(response.data.dish)
-            setIngredients(response.data.ingredients)
+            setLoading(true)
+            try {
+                const response = await api.get(`/dish/${params.id}`)
+                setDataDish(response.data.dish)
+                setIngredients(response.data.ingredients)
+            } catch (error) {
+                console.log("Erro ao buscar os dados", error)
+            } finally {
+                setLoading(false)
+            }
         }
 
         fetchDataDish()
@@ -43,56 +53,61 @@ export function Dish() {
 
     return (
         <Container>
-            <main>
-                <DishLink>
-                    <Link to={-1}>
-                        <IoIosArrowBack />
-                        voltar
-                    </Link>
-                </DishLink>
+            {loading ? (
+                <Spinner />
+            ) : (
+                <main>
+                    <DishLink>
+                        <Link to={-1}>
+                            <IoIosArrowBack />
+                            voltar
+                        </Link>
+                    </DishLink>
 
-                <DishDetails>
-                    <ImageContainer>
-                        <img src={urlImage} alt="" />
-                    </ImageContainer>
+                    <DishDetails>
+                        <ImageContainer>
+                            <img src={urlImage} alt="" />
+                        </ImageContainer>
 
-                    <Description>
-                        <div>
-                            <h2>{dataDish.name}</h2>
+                        <Description>
+                            <div>
+                                <h2>{dataDish.name}</h2>
 
-                            <p>{dataDish.description}</p>
+                                <p>{dataDish.description}</p>
 
-                            <TagContainer>
-                                {
-                                    ingredients.map(ingredient => {
-                                        return (
-                                            <Tag
-                                                key={ingredient.id}
-                                                title={ingredient.name} 
-                                            />
-                                        )
-                                    })
+                                <TagContainer>
+                                    {
+                                        ingredients.map(ingredient => {
+                                            return (
+                                                <Tag
+                                                    key={ingredient.id}
+                                                    title={ingredient.name}
+                                                />
+                                            )
+                                        })
+                                    }
+                                </TagContainer>
+
+                                {![USER_ROLE.ADMIN].includes(user.role) ?
+                                    <ItemCounter
+                                        dishId={params.id}
+                                        price={dataDish.price}
+                                        nameDish={dataDish.name}
+                                        url={urlImage}
+                                    />
+                                    :
+                                    <Button
+                                        title="Editar prato"
+                                        className="bnt-dish"
+                                        onClick={handleNavigate}
+                                    />
                                 }
-                            </TagContainer>
-
-                            {![USER_ROLE.ADMIN].includes(user.role) ?
-                                <ItemCounter
-                                    dishId={params.id}
-                                    price={dataDish.price}
-                                    nameDish={dataDish.name}
-                                    url={urlImage}
-                                />
-                                :
-                                <Button 
-                                    title="Editar prato"
-                                    className="bnt-dish"
-                                    onClick={handleNavigate}
-                                />
-                            }
-                        </div>
-                    </Description>
-                </DishDetails>
-            </main>
+                            </div>
+                        </Description>
+                    </DishDetails>
+                </main>
+            )
+            }
         </Container>
     )
 }

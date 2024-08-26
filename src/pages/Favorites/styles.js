@@ -24,13 +24,15 @@ export const Container = styled.div`
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         height: calc(100vh - 156px);
-
+        
         main {
             grid-template-columns: repeat(3, 1fr);
         }
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        width: 372px;
+        margin: auto;
         main {
             overflow-y: auto;
             display: flex;

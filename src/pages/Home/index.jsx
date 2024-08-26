@@ -1,4 +1,5 @@
 import { Section } from "../../components/Section"
+import { Spinner } from "../../components/Spinner"
 import banner from "../../assets/banner.png"
 import { api } from "../../service/api"
 
@@ -9,11 +10,19 @@ import { Container, Content, Banner } from "./styles";
 
 export function Home() {
     const [dishData, setDishData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function fetchData() {
-            const response = await api.get("dish")
-            setDishData(response.data)
+            setLoading(true)
+            try {
+                const response = await api.get("dish")
+                setDishData(response.data)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setLoading(false)
+            }
         }
 
         fetchData()
@@ -26,55 +35,60 @@ export function Home() {
     const sizeArrayMeals = meals.length > 3
     const sizeArrayDrinks = drinks.length > 3
     const sizeArrayDesserts = desserts.length > 3
-    
+
     return (
         <Container>
-            <Content>
-                <Banner>
-                    <div></div>
-                    <img src={banner} alt="" />
-                    <section>
-                        <h2>Sabores inigualáveis</h2>
-                        <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
-                    </section>
-                </Banner>
+            {loading ? (
+                <Spinner />
+            ) : (
+                <Content>
+                    <Banner>
+                        <div></div>
+                        <img src={banner} alt="" />
+                        <section>
+                            <h2>Sabores inigualáveis</h2>
+                            <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+                        </section>
+                    </Banner>
 
-                <Section title="Refeições">
-                    {
-                        sizeArrayMeals ? (
-                            <div>
-                                <SwiperComponent items={meals} />
-                            </div>
-                        ) : (
-                            <></>
-                        )
-                    }
-                </Section>
+                    <Section title="Refeições">
+                        {
+                            sizeArrayMeals ? (
+                                <div>
+                                    <SwiperComponent items={meals} />
+                                </div>
+                            ) : (
+                                <></>
+                            )
+                        }
+                    </Section>
 
-                <Section title="Sobremesas">
-                    {
-                        sizeArrayDesserts ? (
-                            <div>
-                                <SwiperComponent items={desserts} />
-                            </div>
-                        ) : (
-                            <></>
-                        )
-                    }
-                </Section>
+                    <Section title="Sobremesas">
+                        {
+                            sizeArrayDesserts ? (
+                                <div>
+                                    <SwiperComponent items={desserts} />
+                                </div>
+                            ) : (
+                                <></>
+                            )
+                        }
+                    </Section>
 
-                <Section title="bebidas">
-                    {
-                        sizeArrayDrinks ? (
-                            <div>
-                                <SwiperComponent items={drinks} />
-                            </div>
-                        ) : (
-                            <></>
-                        )
-                    }
-                </Section>
-            </Content>
+                    <Section title="bebidas">
+                        {
+                            sizeArrayDrinks ? (
+                                <div>
+                                    <SwiperComponent items={drinks} />
+                                </div>
+                            ) : (
+                                <></>
+                            )
+                        }
+                    </Section>
+                </Content>
+            )
+            }
         </Container>
     )
 }
