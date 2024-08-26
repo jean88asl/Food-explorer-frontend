@@ -39,7 +39,7 @@ export function Card({ url, dishName, description, price, id }) {
     }
 
     function handleNavigate() {
-        navigate(`/dish/${id}`)
+        navigate(`/editdish/${id}`)
     }
 
     useEffect(() => {
