@@ -47,4 +47,19 @@ export const FooterContent = styled.footer`
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         max-width: 376px;
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        padding: 0 10px;
+
+        div {
+            h2 {
+                font-size: 1.125rem;
+                color: ${({ theme }) => theme['LIGHT-700']}
+            }
+        }
+
+        p {
+           font-size: 0.6875rem
+        }
+    }    
 `

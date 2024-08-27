@@ -6,7 +6,7 @@ export const Container = styled.div`
     width: 100%;
 
     main {
-        min-height:  calc(100vh - 15rem);
+        height:  calc(100vh - 15rem);
         margin: 0 auto;
         max-width: 100%;
     }
@@ -61,6 +61,13 @@ export const ImageContainer = styled.figure`
         object-fit: cover;
         animation: ${appear} 1200ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }  
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        img{
+            max-width: 20rem;
+            max-height: 20rem;  
+        }
+    }
 `
 
 export const Description = styled.div`

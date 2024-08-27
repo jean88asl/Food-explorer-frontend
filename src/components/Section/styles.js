@@ -36,9 +36,13 @@ export const Container = styled.section`
         h2 {
             font-size: 1.5rem;
         }
+    }
 
-        div {
-            --swiper-navigation-size: 1.5rem; 
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        max-width: 300px;
+
+        h2 {
+            font-size: 1.125rem;
         }
     }
 `

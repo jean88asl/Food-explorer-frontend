@@ -8,6 +8,10 @@ export const Container = styled.div`
     gap: 2rem;
     width: 100%;
     animation: ${appear} 1650ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+    @media (max-width:${DEVICE_BREAKPOINTS.XS}) {
+        gap: 0.5rem;
+    }
 `
 
 export const GroupButtons = styled.div`
@@ -27,6 +31,10 @@ export const GroupButtons = styled.div`
         background: transparent;
         border: 0;
         cursor: pointer;
+    }
+
+    @media (max-width:${DEVICE_BREAKPOINTS.XS}) {
+       font-size: 1rem;
     }
 `
 
@@ -53,5 +61,9 @@ export const ExternalButton = styled(buttonDefault)`
         align-items: center;
         justify-content: center;
         width: 100%;        
+    }
+
+    @media (max-width:${DEVICE_BREAKPOINTS.XS}) {
+        padding: 0.5rem 1rem;
     }
 `

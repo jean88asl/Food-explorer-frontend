@@ -55,7 +55,12 @@ export const HeaderContainer = styled.header`
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         max-width: 372px;
         padding: 3.5rem 0rem 1.5rem;
-    }     
+    }
+    
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        max-width: 100%;
+        padding: 40px 10px;
+    }
 `
 
 export const ContainerFavoriteis = styled.section`

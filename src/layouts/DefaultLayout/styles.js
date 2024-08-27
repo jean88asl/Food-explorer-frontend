@@ -15,4 +15,8 @@ export const Content = styled.div`
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         min-height: calc(100vh - 163px);
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SX}) {
+        padding: 0 10px;
+    }    
 `

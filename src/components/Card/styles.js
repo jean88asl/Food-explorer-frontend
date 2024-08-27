@@ -42,8 +42,24 @@ export const Container = styled.div`
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         align-items: center;
+
         article {
             display: none;
+        }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        min-height: auto;
+
+        padding: 2.5rem 1.125rem;
+
+        img {
+            width: 9rem;
+            height: 9rem;
+        }
+
+        a {
+            font-size: 1.125rem;
         }
     }
 `
@@ -52,6 +68,10 @@ export const PriceContainer = styled.span`
     display: block;
     font-size: 2.5rem;
     color: ${({ theme }) => theme['CAKE-200']};
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        font-size: 2rem;
+    }
 `
 
 export const IconCard = styled.div`
