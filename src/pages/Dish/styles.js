@@ -4,9 +4,9 @@ import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
     width: 100%;
-
+    height:  calc(100vh - 15rem);
+    
     main {
-        height:  calc(100vh - 15rem);
         margin: 0 auto;
         max-width: 100%;
     }
