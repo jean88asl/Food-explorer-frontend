@@ -4,11 +4,12 @@ import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
     width: 100%;
-    height:  calc(100vh - 15rem);
-    
+    overflow: hidden;
+
     main {
         margin: 0 auto;
         max-width: 100%;
+        
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
@@ -16,8 +17,17 @@ export const Container = styled.div`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        width: auto;
+
         main {
             max-width: 316px;
+            padding: 0;
+        }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        main {            
+            width: 300px;
             padding: 0;
         }
     }

@@ -138,4 +138,8 @@ export const ButtonsContainer = styled.div`
     .delete {
         background: ${({ theme }) => theme['DARK-800']};       
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        gap: 1.5rem;
+    }
 `

@@ -33,11 +33,28 @@ export const Container = styled.div`
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         width: 372px;
         margin: auto;
+
         main {
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             margin-left: 0.75rem;
+        }
+    }
+
+    @media (max-width: 375px) {
+        width: 350px;
+        
+        main {
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        width: 300px;
+        
+        main {
+            margin-left: 0;
         }
     }
 `
@@ -93,5 +110,9 @@ export const Card = styled.article`
             line-height: 2;
             margin-bottom: 0px;
         }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        width: 290px;
     }
 `

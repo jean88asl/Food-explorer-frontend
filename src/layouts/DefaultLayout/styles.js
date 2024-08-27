@@ -17,6 +17,8 @@ export const Content = styled.div`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SX}) {
+        width: 320px;
+        height: max-content;
         padding: 0 10px;
     }    
 `

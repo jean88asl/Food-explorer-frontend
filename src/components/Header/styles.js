@@ -56,6 +56,11 @@ export const HeaderContainer = styled.header`
         max-width: 372px;
         padding: 3.5rem 0rem 1.5rem;
     }
+
+    @media (max-width: 375px) {
+        max-width: 100%;
+        padding: 40px 10px;
+    }
     
     @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
         max-width: 100%;

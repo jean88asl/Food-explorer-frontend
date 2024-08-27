@@ -38,6 +38,14 @@ export const Container = styled.section`
         }
     }
 
+    @media (max-width: 375px) {
+        max-width: 350px;
+
+        h2 {
+            font-size: 1.125rem;
+        }
+    }
+
     @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
         max-width: 300px;
 

@@ -13,4 +13,8 @@ export const Container = styled.button`
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         width: 100%;
     }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+        padding: 0.75rem 1rem;;
+    }
 `

@@ -3,8 +3,10 @@ import { appear } from "../../styles/animations"
 import { DEVICE_BREAKPOINTS } from "../../styles/layoutBreakpoints"
 
 export const Container = styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     width: 100%;
     animation: ${appear} 1650ms cubic-bezier(0.215, 0.610, 0.355, 1.000) both;

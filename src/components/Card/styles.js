@@ -48,6 +48,11 @@ export const Container = styled.div`
         }
     }
 
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+
+        padding: 2.5rem 1.125rem;       
+    }
+
     @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
         min-height: auto;
 
